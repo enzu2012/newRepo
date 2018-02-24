@@ -1,0 +1,71 @@
+/* These styles are generated from project.scss. */
+
+.alert-debug {
+  color: black;
+  background-color: white;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+/* Display django-debug-toolbar.
+   See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
+   and https://github.com/pydanny/cookiecutter-django/issues/317
+*/
+[hidden][style="display: block;"] {
+  display: block !important;
+}
+
+.graph {
+  width: 800px;
+  height: 500px;
+  font-size: 18px;
+  margin: auto;
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.words {
+  cursor:pointer;
+  color:blue;
+  background-color: #F5F5F5;
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+  font-size: 1.5em;
+  margin: 5px 5px 5px 5px;
+}
+
+.sel-words span:hover {
+  color: red;
+  text-decoration:none;
+  text-shadow: 1px 1px 1px #555;
+}
+
+.insivible {
+  display: none;
+}
+
+  .row {
+    margin: 2em 1em 2em 1em;
+  }
