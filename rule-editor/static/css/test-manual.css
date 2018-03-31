@@ -1,0 +1,50 @@
+div#rule-editor {
+    position: absolute;
+    z-index: 2;
+    top: 60px;
+    left: 60px;
+    width: 90%;
+    height: 700px;
+}
+
+div#rule-info {
+    width: 100%;
+}
+
+div#rule-editor-tool {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 90%;
+}
+
+div.canvas-space {
+    overflow-y: auto;
+    height: 400px;
+}
+
+div.sentence-space {
+    overflow-y: auto;
+    width: 54%;
+    height: 650px;
+    float: left;
+}
+
+div.save-space {
+    margin-left: 10px;
+    width: 44%;
+    float: left;
+    height: 650px;
+}
+
+.save-space > textarea {
+    height: 100%;
+    resize: none;
+
+}
+
+div.row{
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+}
