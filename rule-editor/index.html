@@ -22,7 +22,7 @@
     <link href="static/css/vis.min.css" rel="stylesheet">
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="static/css/test-manual.css" rel="stylesheet">
+    <link href="static/css/tool.css" rel="stylesheet">
     <!-- This file stores project-specific CSS -->
     <link href="static/css/project.css" rel="stylesheet">
 
@@ -57,7 +57,6 @@
 
 <div class="container">
 
-
         <form method="post"><input type='hidden' name='csrfmiddlewaretoken'
                                    value='lbmCNDXRxWIiAuYjaUoVJRRhZSIHkg81I2EmJe7fFW831fxciifW7kErBpbEj248'/>
             <fieldset>
@@ -84,6 +83,10 @@
         <div id="rule-editor" class="collapse">
             <div class="panel panel-info">
                 <div class="panel-heading text-center">
+                    <div class="pull-left">
+                        <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-rule-name" data-item="dataPreRuleName">预设规则名</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-restrict-name" data-item="dataPreRestrictName">预设限定名</button>
+                    </div>
                     <span class="h4">待编辑语句</span>
                     <div class="pull-right">
                         <button class="btn btn-danger btn-xs close-rule-editor">
@@ -114,26 +117,31 @@
                         </div>
                         <div class="panel-body">
                             <div class="row" >
-                                <div class="col col-lg-6">
+                                <div class="col-lg-12 edit-tool-space">
                                     <div class="row">
-                                        <div class="col col-lg-12">
+                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
                                             <div class="collapse in text-left" id="rule-info"
                                                  style="margin-bottom: 10px"></div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col col-lg-12">
+                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
                                             <textarea id="rule" class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col col-lg-12">
-                                            <div class="collapse in text-center" id="rule-edit-tool"
-                                                 style="margin-bottom: 10px"></div>
+                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
+                                            <div class="collapse in" id="rule-edit-tool"></div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-12" id="restrict-space" style="padding: 0 0 0 0;"></div>
+                                        <div class="col-lg-12" id="rule-name-space" style="padding: 0 0 0 0;"></div>
+                                        <div class="col-lg-12" id="keywords-num-space" style="padding: 0 0 0 0;"></div>
+                                    </div>
                                 </div>
-                                <div class="col col-lg-6">
+                                <!-- 树状图显示区域，如要开启将上一个同辈标签改col-lg-6-->
+                                <!--<div class="col-lg-6">
                                     <div class="row canvas-space">
                                         <div class="list-group">
                                             <li class="list-group-item item-text">
@@ -144,7 +152,7 @@
                                             </li>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="panel-footer text-center">
@@ -152,6 +160,28 @@
                             <button class="btn btn-success btn-xs" id="save-rules">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
                             <button class="btn btn-danger btn-xs close-rule-editor-tool">关闭</button>
                             <button class="btn btn-info btn-xs pull-right" id="btn-next-sen">下一句</button>
+                        </div>
+                    </div>
+
+                    <!--预设规则名界面-->
+                    <div class="panel panel-default panel-pre-set collapse" id="panel-preset-rule-name">
+                        <div class="panel-heading text-center">预设规则名</div>
+                        <div class="panel-body">
+                            <textarea class="form-control" rows="6"></textarea>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <button class="btn btn-xs btn-primary btn-confirm text-center" data-item="dataPreRuleName">确认</button>
+                        </div>
+                    </div>
+
+                    <!--预设限定名界面-->
+                    <div class="panel panel-default panel-pre-set collapse" id="panel-preset-restrict-name">
+                        <div class="panel-heading text-center">预设限定名</div>
+                        <div class="panel-body">
+                            <textarea class="form-control" rows="6"></textarea>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <button class="btn btn-xs btn-primary btn-confirm" data-item="dataPreRestrictName">确认</button>
                         </div>
                     </div>
                 </div>
@@ -174,7 +204,7 @@
 <script src="static/js/graphs.js"></script>
 <script src="static/js/jquery.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/ruleEdit.js"></script>
+<script src="static/js/tool.js"></script>
 
 
 </body>
