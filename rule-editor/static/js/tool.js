@@ -279,7 +279,11 @@ function createRule() {
                     }
                 } else {
                     if (restrict != "+") {
-                        restrictString += restrictDefault + restrict + ",";
+                        if(restrict==1){
+                            restrictString+=restrictDefault.substring(0,restrictDefault.length-1)+",";
+                        }else{
+                            restrictString += restrictDefault + restrict + ",";
+                        }
                     }
                 }
             }
