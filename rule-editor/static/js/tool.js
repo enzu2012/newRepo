@@ -406,6 +406,10 @@ function createRestrictTool() {
 //加载完毕执行
 
 $(function () {
+    var presetRuleName=window.localStorage.getItem("dataPreRuleName");
+    if(!presetRuleName) window.localStorage.setItem("dataPreRuleName","空");
+    var presetRestrict=window.localStorage.getItem("dataPreRestrictName");
+    if(!presetRestrict) window.localStorage.setItem("dataPreRestrictName","空");
     //加载编辑工具已保存rules
     $("textarea#save-space").val(window.localStorage.getItem("rulesData"));
     //rule编辑按钮事件绑定
