@@ -285,10 +285,13 @@ function createRule() {
             }
         });
         if (restrictString.length > 2) {
-            restrictString.substring(0, restrictString.length - 2);
+            restrictString=restrictString.substring(0, restrictString.length - 1);
         } else {
             restrictString = "";
         }
+    }
+    if(restrictString.length-restrictString.lastIndexOf(",")===1&&restrictString.length!=0){
+        restrictString=restrictString.substring(0, restrictString.length -1);
     }
     rules += (qaTag.attr("data-status") === "false") ? "" : "QA:";
     for (var wd = 0; wd < everyWord.length; wd++) {
