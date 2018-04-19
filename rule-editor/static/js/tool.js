@@ -157,15 +157,15 @@ function editRules(objBtnRuleEdit) {
     } else {
         nameOptionHtml += "<option value='none'>无预设规则名</option>";
     }
-    ruleNameToolHtml += "<form class='form-inline' role='form'>" +
-        "<div class='form-group'>" +
+    ruleNameToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='form-control' style='width: 120px;'>推理规则名：</label>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='sr-only' for='input-rule-name'>规则名文本</label>" +
         "<input type='text' class='form-control input-fixed' id='input-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<select class='form-control select-fixed' id='preset-rule-name'>" +
         nameOptionHtml +
         "</select>" +
@@ -178,14 +178,14 @@ function editRules(objBtnRuleEdit) {
         optionHtml += "<option class='form-control' value='[" + keywordNum + "]'>[" + keywordNum + "]</option>";
     }
     var keywordsNumToolHtml = "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='form-control' style='width: 120px;'>关键词-前：</label>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
         "<input type='text' class='form-control input-fixed' id='keyword-txt-ahead' value='visitorname' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<select class='form-control select-fixed' id='keyword-num-ahead'>" +
         "<option value='visitorname' selected>visitorname</option>" +
         optionHtml +
@@ -193,14 +193,14 @@ function editRules(objBtnRuleEdit) {
         "</div>" +
         "</form>" +
         "<form class='form-inline' role='form'>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='form-control' style='width: 120px;'>关键词-后：</label>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
         "<input type='text' class='form-control input-fixed' id='keyword-txt-behind' value='[1]' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group'>" +
+        "<div class='form-group' style='margin-right: 5px'>" +
         "<select class='form-control select-fixed' id='keyword-num-behind'>" +
         optionHtml +
         "</select>" +
@@ -389,18 +389,18 @@ function createRestrictTool() {
         if ($(word).attr("data-type") == "property") {
             var wordIndex = $(word).attr("data-num");
             restrictToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
-                "<div class='form-group'>" +
+                "<div class='form-group' style='margin-right: 5px'>" +
                 "<label class='form-control' data-index='" + wordIndex + "' style='width: 120px;'>" +
                 +wordIndex +
                 "=+" +
                 $(word).text() + "+" +
                 "</label>" +
                 "</div>" +
-                "<div class='form-group'>" +
+                "<div class='form-group' style='margin-right: 5px'>" +
                 "<label class='sr-only' for='restrict-txt'>词语限定文本</label>" +
                 "<input type='text' class='form-control restrict-txt' id='restrict-txt' style='width: 130px;'>" +
                 "</div>" +
-                "<div class='form-group'>" +
+                "<div class='form-group' style='margin-right: 5px'>" +
                 "<select class='form-control select-change' id='preset-restrict'>" +
                 restrictOptionHtml +
                 "</select>" +
