@@ -86,7 +86,7 @@ function editRules(objBtnRuleEdit) {
     //显示现有rules
     $("em#rule-num-tag").text((!rulesNum) ? "0" : rulesNum.length);
     //编辑工具按钮组字符串
-    var ruleEditBtns = "<i class='btn btn-primary property fa fa-plus-square'></i><i class='btn btn-danger ignore fa fa-minus-square' style='display: none'></i>";
+    var ruleEditBtns = "<i class='btn btn-primary property fa fa-plus-square' style='margin-right: 10px'></i><i class='btn btn-danger ignore fa fa-minus-square' style='display: none;margin-right: 10px'></i>";
     //对匹配到的测试结果进行处理
     var infoHtml = "";
     var info = infoSentence.split("\n");
@@ -146,7 +146,7 @@ function editRules(objBtnRuleEdit) {
     }
     ruleNameToolHtml += "<form class='form-inline' role='form'>" +
         "<div class='form-group'>" +
-        "<label class='form-control'>推理规则名：</label>" +
+        "<label class='form-control' style='width: 120px;'>推理规则名：</label>" +
         "</div>" +
         "<div class='form-group'>" +
         "<label class='sr-only' for='input-rule-name'>规则名文本</label>" +
@@ -166,7 +166,7 @@ function editRules(objBtnRuleEdit) {
     }
     var keywordsNumToolHtml = "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
         "<div class='form-group'>" +
-        "<label class='form-control'>关键词-前：</label>" +
+        "<label class='form-control' style='width: 120px;'>关键词-前：</label>" +
         "</div>" +
         "<div class='form-group'>" +
         "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
@@ -181,7 +181,7 @@ function editRules(objBtnRuleEdit) {
         "</form>" +
         "<form class='form-inline' role='form'>" +
         "<div class='form-group'>" +
-        "<label class='form-control'>关键词-后：</label>" +
+        "<label class='form-control' style='width: 120px;'>关键词-后：</label>" +
         "</div>" +
         "<div class='form-group'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
@@ -377,7 +377,7 @@ function createRestrictTool() {
             var wordIndex = $(word).attr("data-num");
             restrictToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
                 "<div class='form-group'>" +
-                "<label class='form-control' data-index='" + wordIndex + "'>" +
+                "<label class='form-control' data-index='" + wordIndex + "' style='width: 120px;'>" +
                 +wordIndex +
                 "=+" +
                 $(word).text() + "+" +
@@ -385,7 +385,7 @@ function createRestrictTool() {
                 "</div>" +
                 "<div class='form-group'>" +
                 "<label class='sr-only' for='restrict-txt'>词语限定文本</label>" +
-                "<input type='text' class='form-control restrict-txt' id='restrict-txt'>" +
+                "<input type='text' class='form-control restrict-txt' id='restrict-txt' style='width: 130px;'>" +
                 "</div>" +
                 "<div class='form-group'>" +
                 "<select class='form-control select-change' id='preset-restrict'>" +
