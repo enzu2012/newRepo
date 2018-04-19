@@ -48,13 +48,13 @@ function btnRuleEditOnClick() {
 
 //生成编辑工具
 function editRules(objBtnRuleEdit) {
-    var target=$(objBtnRuleEdit).attr("data-target");
+    var target = $(objBtnRuleEdit).attr("data-target");
     //更新标记按钮目标
     $("button.btn-mark").attr("data-target", target);
     //更新上一句按钮目标
-    $("button#btn-prev-sen").attr("data-target",target-1);
+    $("button#btn-prev-sen").attr("data-target", target - 1);
     //更新下一句按钮目标
-    $("button#btn-next-sen").attr("data-target",target+1);
+    $("button#btn-next-sen").attr("data-target", target + 1);
     //要编辑的语句
     var sentence = $(objBtnRuleEdit).parent().prev().text();
     //待编辑语句测试结果
@@ -96,9 +96,9 @@ function editRules(objBtnRuleEdit) {
     }
     //显示匹配到的测试结果
     ruleInfo.show().html(infoHtml);
-    $("textarea#sentence-test-result").val(info[0]+"\n"+info[1]);
+    $("textarea#sentence-test-result").val(info[0] + "\n" + info[1]);
     //提取括号包含的内容
-    var senTestResult=info[1];
+    var senTestResult = info[1];
     var ruleWords = senTestResult.match(/\([^)]*\)/gi);
     //遍历括号内容数组，去掉括号并按逗号拆分词组 不重复的存入words数组
     for (var j = 0; j < ruleWords.length; j++) {
@@ -125,10 +125,23 @@ function editRules(objBtnRuleEdit) {
             }
         }
         if (loopNum++ === 100) {
-            ruleEditToolSpace.html("");
-            $("div#rule-editor-tool").show();
-            $("textarea#rule").val("关键词匹配错误，请检查\"" + sentence.substring(0, 4) + "\"位置");
-            return;
+            var minIndex = sentence.length;
+            var wordIndex = 0;
+            for (var w1 = 0; w1 < words.length; w1++) {
+                wordIndex = sentence.indexOf(words[w1]);
+                if (wordIndex !== -1 && wordIndex < minIndex) {
+                    minIndex = wordIndex;
+                }
+            }
+            if (minIndex !== 0) {
+                ruleEditToolSpace.append("<strong data-type='ignore' class='h3'>" + sentence.substring(0, minIndex) + "</strong>" + ruleEditBtns);
+                sentence = sentence.substring(minIndex, sentence.length);
+            } else {
+                ruleEditToolSpace.html("");
+                $("div#rule-editor-tool").show();
+                $("textarea#rule").val("关键词匹配错误，请检查\"" + sentence.substring(0, 4) + "\"位置");
+                return;
+            }
         }
     } while (sentence.length !== 0);
 
@@ -279,9 +292,9 @@ function createRule() {
                     }
                 } else {
                     if (restrict != "+") {
-                        if(restrict==1){
-                            restrictString+=restrictDefault.substring(0,restrictDefault.length-1)+",";
-                        }else{
+                        if (restrict == 1) {
+                            restrictString += restrictDefault.substring(0, restrictDefault.length - 1) + ",";
+                        } else {
                             restrictString += restrictDefault + restrict + ",";
                         }
                     }
@@ -289,13 +302,13 @@ function createRule() {
             }
         });
         if (restrictString.length > 2) {
-            restrictString=restrictString.substring(0, restrictString.length - 1);
+            restrictString = restrictString.substring(0, restrictString.length - 1);
         } else {
             restrictString = "";
         }
     }
-    if(restrictString.length-restrictString.lastIndexOf(",")===1&&restrictString.length!=0){
-        restrictString=restrictString.substring(0, restrictString.length -1);
+    if (restrictString.length - restrictString.lastIndexOf(",") === 1 && restrictString.length != 0) {
+        restrictString = restrictString.substring(0, restrictString.length - 1);
     }
     rules += (qaTag.attr("data-status") === "false") ? "" : "QA:";
     for (var wd = 0; wd < everyWord.length; wd++) {
@@ -413,10 +426,10 @@ function createRestrictTool() {
 //加载完毕执行
 
 $(function () {
-    var presetRuleName=window.localStorage.getItem("dataPreRuleName");
-    if(!presetRuleName) window.localStorage.setItem("dataPreRuleName","空");
-    var presetRestrict=window.localStorage.getItem("dataPreRestrictName");
-    if(!presetRestrict) window.localStorage.setItem("dataPreRestrictName","空");
+    var presetRuleName = window.localStorage.getItem("dataPreRuleName");
+    if (!presetRuleName) window.localStorage.setItem("dataPreRuleName", "空");
+    var presetRestrict = window.localStorage.getItem("dataPreRestrictName");
+    if (!presetRestrict) window.localStorage.setItem("dataPreRestrictName", "空");
     //加载编辑工具已保存rules
     $("textarea#save-space").val(window.localStorage.getItem("rulesData"));
     //rule编辑按钮事件绑定
