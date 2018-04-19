@@ -15,7 +15,7 @@ function getRulesInfo() {
                 "<td>" +
                 "<button data-target='" + i + "' class='btn btn-success btn-xs btn-sen-select'>选中</button>&nbsp;&nbsp;&nbsp;" +
                 "<button data-target='" + i + "' class='btn btn-primary btn-xs btn-rule-edit'>编辑</button>" +
-                "<span data-target='" + i + "' class='btn btn-primary btn-xs btn-rule-edit' style='display: none'>" + testResult[i] + "</span>" +
+                "<span class='btn btn-primary btn-xs btn-rule-edit' style='display: none'>" + testResult[i] + "</span>" +
                 "</td>" +
                 "</tr>";
             senNum++;
@@ -52,9 +52,9 @@ function editRules(objBtnRuleEdit) {
     //更新标记按钮目标
     $("button.btn-mark").attr("data-target", target);
     //更新上一句按钮目标
-    $("button#btn-prev-sen").attr("data-target", target - 1);
+    $("button#btn-prev-sen").attr("data-target", target-1);
     //更新下一句按钮目标
-    $("button#btn-next-sen").attr("data-target", target + 1);
+    $("button#btn-next-sen").attr("data-target", target-1+2);
     //要编辑的语句
     var sentence = $(objBtnRuleEdit).parent().prev().text();
     //待编辑语句测试结果
@@ -478,21 +478,42 @@ $(function () {
         var target = "#" + $(this).attr("data-target");
         $(target).toggleClass("text-danger");
     });
-    /*//上一句按钮事件绑定
+    //上一句按钮事件绑定
     $("button#btn-prev-sen").on("click", function () {
         var targetIdNum=$(this).attr("data-target");
-        $("table#test-info").find("button.btn-rule-edit").each(function () {
-            var btnId = $(this).attr("data-target");
-            if(targetIdNum==btnId){
-                editRules(this);
-                return;
-            }
-        });
-        alert("没有上一句");
+        if(targetIdNum>=1){
+            var btnId;
+            $("table#test-info").find("button.btn-rule-edit").each(function () {
+                btnId = $(this).attr("data-target");
+                //alert(btnId);
+                if(targetIdNum===btnId){
+                    //alert("foundTarget");
+                    editRules(this);
+                }
+            });
+        }else {
+            alert("没有上一句");
+        }
     });
     //下一句按钮事件绑定
     $("button#btn-next-sen").on("click", function () {
         var targetIdNum=$(this).attr("data-target");
+        //alert(targetIdNum);
+        var btnRuleEdits=$("table#test-info").find("button.btn-rule-edit");
+        if(targetIdNum<=btnRuleEdits.length){
+            var btnId;
+            for(var b=0;b<btnRuleEdits.length;b++){
+                btnId=btnRuleEdits[b].getAttribute("data-target");
+                if(btnId===targetIdNum){
+                    //alert("findTarget");
+                    editRules(btnRuleEdits[b]);
+                    break;
+                }
+            }
+        }else{
+            alert("已是最后一句");
+        }
+        /*
         $("table#test-info").find("button.btn-rule-edit").each(function () {
             var btnId=$(this).attr("data-target");
             if(targetIdNum==btnId){
@@ -500,8 +521,8 @@ $(function () {
 
             }
         });
-        alert("已是最后一句");
-    });*/
+        alert("已是最后一句");*/
+    });
     //清空按钮事件绑定
     $("button.clean-save-space").on("click", function () {
         var saveSpace = $("textarea#save-space");
