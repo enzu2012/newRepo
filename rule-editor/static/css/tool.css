@@ -44,12 +44,12 @@ div.save-space {
 
 }
 
-div.row{
+div.row {
     margin: 0 0 5px 0;
     padding: 0 0 0 0;
 }
 
-div.panel-pre-set{
+div.panel-pre-set {
     display: none;
     position: fixed;
     width: 30%;

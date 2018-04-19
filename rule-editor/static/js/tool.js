@@ -52,9 +52,9 @@ function editRules(objBtnRuleEdit) {
     //更新标记按钮目标
     $("button.btn-mark").attr("data-target", target);
     //更新上一句按钮目标
-    $("button#btn-prev-sen").attr("data-target", target-1);
+    $("button#btn-prev-sen").attr("data-target", target - 1);
     //更新下一句按钮目标
-    $("button#btn-next-sen").attr("data-target", target-1+2);
+    $("button#btn-next-sen").attr("data-target", target - 1 + 2);
     //要编辑的语句
     var sentence = $(objBtnRuleEdit).parent().prev().text();
     //待编辑语句测试结果
@@ -480,37 +480,37 @@ $(function () {
     });
     //上一句按钮事件绑定
     $("button#btn-prev-sen").on("click", function () {
-        var targetIdNum=$(this).attr("data-target");
-        if(targetIdNum>=1){
+        var targetIdNum = $(this).attr("data-target");
+        if (targetIdNum >= 1) {
             var btnId;
             $("table#test-info").find("button.btn-rule-edit").each(function () {
                 btnId = $(this).attr("data-target");
                 //alert(btnId);
-                if(targetIdNum===btnId){
+                if (targetIdNum === btnId) {
                     //alert("foundTarget");
                     editRules(this);
                 }
             });
-        }else {
+        } else {
             alert("没有上一句");
         }
     });
     //下一句按钮事件绑定
     $("button#btn-next-sen").on("click", function () {
-        var targetIdNum=$(this).attr("data-target");
+        var targetIdNum = $(this).attr("data-target");
         //alert(targetIdNum);
-        var btnRuleEdits=$("table#test-info").find("button.btn-rule-edit");
-        if(targetIdNum<=btnRuleEdits.length){
+        var btnRuleEdits = $("table#test-info").find("button.btn-rule-edit");
+        if (targetIdNum <= btnRuleEdits.length) {
             var btnId;
-            for(var b=0;b<btnRuleEdits.length;b++){
-                btnId=btnRuleEdits[b].getAttribute("data-target");
-                if(btnId===targetIdNum){
+            for (var b = 0; b < btnRuleEdits.length; b++) {
+                btnId = btnRuleEdits[b].getAttribute("data-target");
+                if (btnId === targetIdNum) {
                     //alert("findTarget");
                     editRules(btnRuleEdits[b]);
                     break;
                 }
             }
-        }else{
+        } else {
             alert("已是最后一句");
         }
         /*

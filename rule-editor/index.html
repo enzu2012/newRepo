@@ -57,141 +57,147 @@
 
 <div class="container">
 
-        <form method="post"><input type='hidden' name='csrfmiddlewaretoken'
-                                   value='lbmCNDXRxWIiAuYjaUoVJRRhZSIHkg81I2EmJe7fFW831fxciifW7kErBpbEj248'/>
-            <fieldset>
-                <div id="div_id_knowledge" class="form-group">
-                    <label for="id_knowledge" class="form-control-label  requiredField">Knowledge
-                        <span class="asteriskField">*</span>
-                    </label>
-                    <div class="">
-                        <textarea class="textarea form-control" cols="40" id="id_knowledge" name="knowledge" rows="20" required></textarea>
-                    </div>
-                </div>
-            </fieldset>
-            <div class="form-group">
+    <form method="post"><input type='hidden' name='csrfmiddlewaretoken'
+                               value='lbmCNDXRxWIiAuYjaUoVJRRhZSIHkg81I2EmJe7fFW831fxciifW7kErBpbEj248'/>
+        <fieldset>
+            <div id="div_id_knowledge" class="form-group">
+                <label for="id_knowledge" class="form-control-label  requiredField">Knowledge
+                    <span class="asteriskField">*</span>
+                </label>
                 <div class="">
-                   <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
-                           id="submit-id-submit"/>-->
-                    <input name="begin edit" value="Generate Tool" class="btn btn-primary button white"
-                           id="btn-rule-edit"/>
+                    <textarea class="textarea form-control" cols="40" id="id_knowledge" name="knowledge" rows="20"
+                              required></textarea>
                 </div>
             </div>
-        </form>
+        </fieldset>
+        <div class="form-group">
+            <div class="">
+                <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
+                        id="submit-id-submit"/>-->
+                <input name="begin edit" value="Generate Tool" class="btn btn-primary button white"
+                       id="btn-rule-edit"/>
+            </div>
+        </div>
+    </form>
 
-        <!--规则编辑界面-->
-        <div id="rule-editor" class="collapse">
-            <div class="panel panel-info">
-                <div class="panel-heading text-center">
-                    <div class="pull-left">
-                        <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-rule-name" data-item="dataPreRuleName">预设规则名</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-restrict-name" data-item="dataPreRestrictName">预设限定名</button>
-                    </div>
-                    <span class="h4">待编辑语句</span>
-                    <div class="pull-right">
-                        <button class="btn btn-danger btn-xs close-rule-editor">
-                            <i class="fa fa-close"></i>
-                        </button>
-                    </div>
+    <!--规则编辑界面-->
+    <div id="rule-editor" class="collapse">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                <div class="pull-left">
+                    <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-rule-name"
+                            data-item="dataPreRuleName">预设规则名
+                    </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-success btn-xs btn-open" data-target="panel-preset-restrict-name"
+                            data-item="dataPreRestrictName">预设限定名
+                    </button>
                 </div>
-                <div class="panel-body test-info">
-                    <div class="sentence-space">
-                        <table class="table table-striped" id="test-info">
-                        </table>
-                    </div>
-                    <div class="save-space">
-                        <textarea class="form-control" id="save-space"></textarea>
-                    </div>
-                    <div class="panel panel-default" id="rule-editor-tool">
-                        <div class="panel-heading text-center">
+                <span class="h4">待编辑语句</span>
+                <div class="pull-right">
+                    <button class="btn btn-danger btn-xs close-rule-editor">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body test-info">
+                <div class="sentence-space">
+                    <table class="table table-striped" id="test-info">
+                    </table>
+                </div>
+                <div class="save-space">
+                    <textarea class="form-control" id="save-space"></textarea>
+                </div>
+                <div class="panel panel-default" id="rule-editor-tool">
+                    <div class="panel-heading text-center">
                         <span class="pull-left h6">已保存rules:&nbsp;&nbsp;
                             <em id="rule-num-tag"></em>
                         </span>
-                            <span class="h4">规则编辑器</span>
-                            <div class="pull-right">
-                                <button class='btn btn-info btn-xs btn-default'>恢复默认</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-danger btn-xs close-rule-editor-tool">
-                                    <i class="fa fa-close"></i>
-                                </button>
-                            </div>
+                        <span class="h4">规则编辑器</span>
+                        <div class="pull-right">
+                            <button class='btn btn-info btn-xs btn-default'>恢复默认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-xs close-rule-editor-tool">
+                                <i class="fa fa-close"></i>
+                            </button>
                         </div>
-                        <div class="panel-body">
-                            <div class="row" >
-                                <div class="col-lg-12 edit-tool-space">
-                                    <div class="row">
-                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
-                                            <div class="collapse in text-left" id="rule-info"
-                                                 style="margin-bottom: 10px"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
-                                            <textarea id="rule" class="form-control" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12" style="padding: 0 0 0 0;">
-                                            <div class="collapse in" id="rule-edit-tool"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12" id="restrict-space" style="padding: 0 0 0 0;"></div>
-                                        <div class="col-lg-12" id="rule-name-space" style="padding: 0 0 0 0;"></div>
-                                        <div class="col-lg-12" id="keywords-num-space" style="padding: 0 0 0 0;"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12 edit-tool-space">
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 0 0 0 0;">
+                                        <div class="collapse in text-left" id="rule-info"
+                                             style="margin-bottom: 10px"></div>
                                     </div>
                                 </div>
-                                <!-- 树状图显示区域，如要开启将上一个同辈标签改col-lg-6-->
-                                <!--<div class="col-lg-6">
-                                    <div class="row canvas-space">
-                                        <div class="list-group">
-                                            <li class="list-group-item item-text">
-                                                <pre></pre>
-                                            </li>
-                                            <li class="list-group-item item-canvas">
-                                                <div id="graph0" class="graph"></div>
-                                            </li>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 0 0 0 0;">
+                                        <textarea id="rule" class="form-control" rows="3"></textarea>
                                     </div>
-                                </div>-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding: 0 0 0 0;">
+                                        <div class="collapse in" id="rule-edit-tool"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12" id="restrict-space" style="padding: 0 0 0 0;"></div>
+                                    <div class="col-lg-12" id="rule-name-space" style="padding: 0 0 0 0;"></div>
+                                    <div class="col-lg-12" id="keywords-num-space" style="padding: 0 0 0 0;"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-footer text-center">
-                            <button class="btn btn-info btn-xs pull-left" id="btn-prev-sen">上一句</button>
-                            <button class="btn btn-success btn-xs" id="save-rules">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-danger btn-xs close-rule-editor-tool">关闭</button>
-                            <button class="btn btn-info btn-xs pull-right" id="btn-next-sen">下一句</button>
-                        </div>
-                    </div>
-
-                    <!--预设规则名界面-->
-                    <div class="panel panel-default panel-pre-set collapse" id="panel-preset-rule-name">
-                        <div class="panel-heading text-center">预设规则名</div>
-                        <div class="panel-body">
-                            <textarea class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="panel-footer text-center">
-                            <button class="btn btn-xs btn-primary btn-confirm text-center" data-item="dataPreRuleName">确认</button>
+                            <!-- 树状图显示区域，如要开启将上一个同辈标签改col-lg-6-->
+                            <!--<div class="col-lg-6">
+                                <div class="row canvas-space">
+                                    <div class="list-group">
+                                        <li class="list-group-item item-text">
+                                            <pre></pre>
+                                        </li>
+                                        <li class="list-group-item item-canvas">
+                                            <div id="graph0" class="graph"></div>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>-->
                         </div>
                     </div>
-
-                    <!--预设限定名界面-->
-                    <div class="panel panel-default panel-pre-set collapse" id="panel-preset-restrict-name">
-                        <div class="panel-heading text-center">预设限定名</div>
-                        <div class="panel-body">
-                            <textarea class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="panel-footer text-center">
-                            <button class="btn btn-xs btn-primary btn-confirm" data-item="dataPreRestrictName">确认</button>
-                        </div>
+                    <div class="panel-footer text-center">
+                        <button class="btn btn-info btn-xs pull-left" id="btn-prev-sen">上一句</button>
+                        <button class="btn btn-success btn-xs" id="save-rules">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-danger btn-xs close-rule-editor-tool">关闭</button>
+                        <button class="btn btn-info btn-xs pull-right" id="btn-next-sen">下一句</button>
                     </div>
                 </div>
-                <div class="panel-footer text-center">
-                    <button class="btn btn-danger btn-xs close-rule-editor">关闭</button>
-                    <button class="btn btn-warning btn-xs clean-save-space pull-right">清空</button>
+
+                <!--预设规则名界面-->
+                <div class="panel panel-default panel-pre-set collapse" id="panel-preset-rule-name">
+                    <div class="panel-heading text-center">预设规则名</div>
+                    <div class="panel-body">
+                        <textarea class="form-control" rows="6"></textarea>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <button class="btn btn-xs btn-primary btn-confirm text-center" data-item="dataPreRuleName">确认
+                        </button>
+                    </div>
+                </div>
+
+                <!--预设限定名界面-->
+                <div class="panel panel-default panel-pre-set collapse" id="panel-preset-restrict-name">
+                    <div class="panel-heading text-center">预设限定名</div>
+                    <div class="panel-body">
+                        <textarea class="form-control" rows="6"></textarea>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <button class="btn btn-xs btn-primary btn-confirm" data-item="dataPreRestrictName">确认</button>
+                    </div>
                 </div>
             </div>
+            <div class="panel-footer text-center">
+                <button class="btn btn-danger btn-xs close-rule-editor">关闭</button>
+                <button class="btn btn-warning btn-xs clean-save-space pull-right">清空</button>
+            </div>
         </div>
-        <!--规则编辑界面-->
+    </div>
+    <!--规则编辑界面-->
 
 </div> <!-- /container -->
 
