@@ -133,10 +133,13 @@ function editRules(objBtnRuleEdit) {
                     minIndex = wordIndex;
                 }
             }
-            if (minIndex !== 0) {
+            if (minIndex > 0) {
+                //alert(sentence.substring(0, minIndex));
                 ruleEditToolSpace.append("<strong data-type='ignore' class='h3'>" + sentence.substring(0, minIndex) + "</strong>" + ruleEditBtns);
                 sentence = sentence.substring(minIndex, sentence.length);
-            } else {
+                //alert(sentence);
+                loopNum=0;
+            }else{
                 ruleEditToolSpace.html("");
                 $("div#rule-editor-tool").show();
                 $("textarea#rule").val("关键词匹配错误，请检查\"" + sentence.substring(0, 4) + "\"位置");
