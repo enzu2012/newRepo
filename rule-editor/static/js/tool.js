@@ -433,6 +433,11 @@ $(function () {
     if (!presetRuleName) window.localStorage.setItem("dataPreRuleName", "空");
     var presetRestrict = window.localStorage.getItem("dataPreRestrictName");
     if (!presetRestrict) window.localStorage.setItem("dataPreRestrictName", "空");
+    var replacePattern=window.localStorage.getItem("replacePattern");
+    if(!replacePattern)window.localStorage.setItem("replacePattern","我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
+    var fileUrl=window.localStorage.getItem("fileUrl");
+    if(!fileUrl)window.localStorage.setItem("fileUrl","空");
+
     //加载编辑工具已保存rules
     $("textarea#save-space").val(window.localStorage.getItem("rulesData"));
     //rule编辑按钮事件绑定
@@ -555,5 +560,43 @@ $(function () {
             $(this).parent().parent().hide();
         })
     });
-
+    //替换规则按钮事件绑定
+    $("input#replace-pattern").on("click",function () {
+        var dataItem=$(this).attr("data-item");
+        var dataStatus=$(this).attr("data-status");
+        if(dataStatus==="read"){
+            var pattern=window.localStorage.getItem(dataItem);
+            $("textarea#id_knowledge").val(pattern);
+            $(this).attr("data-status","write");
+            $(this).attr("value","保存替换规则");
+        }
+        if(dataStatus==="write"){
+            window.localStorage.setItem(dataItem,$("textarea#id_knowledge").val());
+            $(this).attr("data-status","read");
+            $(this).attr("value","读取替换规则");
+        }
+    });
+    //人称替换按钮事件绑定
+    $("input#replace-nr").on("click",function () {
+        var fileTextarea=$("textarea#id_knowledge");
+        var replaceFile=$(fileTextarea).val();
+        var replacePattern=window.localStorage.getItem("replacePattern");
+        var patterns=replacePattern.split("\n");
+        if(patterns.length!==0){
+            patterns.sort().reverse();
+        }
+        var matchWords=[],replaceWords=[];
+        for(var num=0;num<patterns.length;num++){
+            var pattern=patterns[num].split("-");
+            matchWords[num]=pattern[0];
+            replaceWords[num]=pattern[1];
+        }
+        for(var num2=0;num2<matchWords.length;num2++){
+            //alert(matchWords[num2]);
+            var regStr="/"+matchWords[num2]+"/gi";
+            replaceFile=replaceFile.replace(eval(regStr),replaceWords[num2]);
+            //alert(replaceFile);
+        }
+        $(fileTextarea).val(replaceFile);
+    });
 });
