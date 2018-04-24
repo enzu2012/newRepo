@@ -564,9 +564,10 @@ $(function () {
     $("input#replace-pattern").on("click",function () {
         var dataItem=$(this).attr("data-item");
         var dataStatus=$(this).attr("data-status");
+        var optionSpcace=$("textarea#id_knowledge");
         if(dataStatus==="read"){
             var pattern=window.localStorage.getItem(dataItem);
-            $("textarea#id_knowledge").val(pattern);
+            $(optionSpcace).val(pattern);
             $(this).attr("data-status","write");
             $(this).attr("value","保存替换规则");
         }
@@ -574,6 +575,7 @@ $(function () {
             window.localStorage.setItem(dataItem,$("textarea#id_knowledge").val());
             $(this).attr("data-status","read");
             $(this).attr("value","读取替换规则");
+            $(optionSpcace).val("");
         }
     });
     //人称替换按钮事件绑定
