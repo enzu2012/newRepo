@@ -620,7 +620,13 @@ $(function () {
         }
         var fileRecovered = "";
         for (var j = 0; j < rules.length; j++) {
-            fileRecovered += rules[j] + "\n";
+            if(rules[j]){
+                if(rules[j].indexOf("QA:")==0){
+                    rules[j]=rules[j].substring(3,rules[j].length);
+                    //alert(rules[j]);
+                }
+                fileRecovered += rules[j] + "\n";
+            }
         }
         $(fileTextarea).val(fileRecovered);
     });
