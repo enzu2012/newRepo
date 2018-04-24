@@ -599,4 +599,29 @@ $(function () {
         }
         $(fileTextarea).val(replaceFile);
     });
+    //规则还原按钮事件绑定
+    $("input#rule-recover").on("click", function () {
+        var fileTextarea = $("textarea#id_knowledge");
+        var fileOfRules = $(fileTextarea).val();
+        var rules = fileOfRules.split("\n");
+        //alert(rules.length);
+        for (var i = 0; i < rules.length; i++) {
+            if (rules[i]) {
+                if (rules[i].indexOf("|")) {
+                    rules[i] = rules[i].split("|")[0];
+                } else {
+                    rules[i] = rules[i].split("~")[0];
+                }
+                do {
+                    rules[i] = rules[i].replace(/\[[^\]]*\]/gi, "");
+                    //alert(rules[i]);
+                } while (rules[i].indexOf("[") > -1)
+            }
+        }
+        var fileRecovered = "";
+        for (var j = 0; j < rules.length; j++) {
+            fileRecovered += rules[j] + "\n";
+        }
+        $(fileTextarea).val(fileRecovered);
+    });
 });
