@@ -404,6 +404,9 @@ function createRestrictTool() {
                 "<input type='text' class='form-control restrict-txt' id='restrict-txt' style='width: 130px;'>" +
                 "</div>" +
                 "<div class='form-group' style='margin-right: 5px'>" +
+                "<input class='btn btn-warning none-restrict' id='none-restrict' value='none'style='width: 60px;'>" +
+                "</div>" +
+                "<div class='form-group' style='margin-right: 5px'>" +
                 "<select class='form-control select-change' id='preset-restrict'>" +
                 restrictOptionHtml +
                 "</select>" +
@@ -414,12 +417,18 @@ function createRestrictTool() {
     $("div#restrict-space").html(restrictToolHtml).find("select.select-change").each(function () {
         $(this).on("change", function () {
             var selectVal = $(this).val();
-            $(this).parent().prev().find("input").val(selectVal);
+            $(this).parent().prev().prev().find("input").val(selectVal);
             createRule();
         })
     });
     $("div#restrict-space").find("input.restrict-txt").each(function () {
         $(this).on("keyup", function () {
+            createRule();
+        })
+    });
+    $("div#restrict-space").find("input.none-restrict").each(function () {
+        $(this).on("click", function () {
+            $(this).parent().prev().find("input").val("none");
             createRule();
         })
     });
@@ -632,4 +641,37 @@ $(function () {
         }
         $(fileTextarea).val(fileRecovered);
     });
+    //配置文件查重按钮事件绑定
+    /*$("input#config-file-confirm").on("click",function(){
+        var fileTextarea=$("textarea#id_knowledge");
+        var fileOfConfig=fileTextarea.val();
+        var configs=fileOfConfig.split("\n");
+        var configsSplit=configs;
+        var configsStr=configs;
+        var indexNum;
+        var resultStr="";
+        for(var c=0;c<configs.length;c++){
+            //alert(configs[c]);
+            configsSplit[c]=(configs[c].split("+").sort());
+            //alert(configsSplit[c]);
+            configsStr[c]="";
+            for(var d=0;d<configsSplit[c].length;d++){
+                alert("拼接");
+                configsStr[c]=configsStr[c]+configsSplit[c][d];
+            }
+        }
+        //alert(""+configs[0]);
+        for(var r=0;r<configsStr.length;r++){
+            for(var r2=0;r2<configsStr.length;r2++){
+                if(r!==r2){
+                    alert(configsStr[r]+"and"+configsStr[r2]);
+                    if(configsStr[r]===configsStr[r2]){
+                        resultStr+=configs[r]+"\n"+configs[r2]+"\n重复"+"\n";
+                    }
+                }
+            }
+        }
+        fileTextarea.val(resultStr);
+    });*/
+
 });
