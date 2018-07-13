@@ -428,7 +428,12 @@ function createRestrictTool() {
     });
     $("div#restrict-space").find("input.none-restrict").each(function () {
         $(this).on("click", function () {
-            $(this).parent().prev().find("input").val("none");
+            var txtRestrict=$(this).parent().prev().find("input");
+            if(txtRestrict.val()=="none"){
+                txtRestrict.val("");
+            }else{
+                txtRestrict.val("none");
+            }
             createRule();
         })
     });
