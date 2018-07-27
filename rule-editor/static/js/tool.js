@@ -111,7 +111,16 @@ function editRules(objBtnRuleEdit) {
             }
         }
     }
+    //获取localstorage中的固定词组信息
+    var dataFixedWords=window.localStorage.getItem("dataPreFixedWords");
+    var fixedWords=dataFixedWords.split("\n");
+    //alert(fixedWords);
+    //将固定词组放入words数组
+    for(var i=0;i<fixedWords.length;i++){
+        words.push(fixedWords[i]);
+    }
     words = words.sort().reverse();
+    //alert(words);
     //按语句顺序匹配words中的关键词，生成rules编辑工具
     var loopNum = 0;
     //QA按钮
@@ -447,6 +456,8 @@ $(function () {
     if (!presetRuleName) window.localStorage.setItem("dataPreRuleName", "空");
     var presetRestrict = window.localStorage.getItem("dataPreRestrictName");
     if (!presetRestrict) window.localStorage.setItem("dataPreRestrictName", "空");
+    var presetFixedWords = window.localStorage.getItem("dataPreFixedWords");
+    if (!presetFixedWords) window.localStorage.setItem("dataPreFixedWords", "大前天\n前天\n昨天\n今天\n明天\n后天\n大后天\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六\n星期天");
     var replacePattern=window.localStorage.getItem("replacePattern");
     if(!replacePattern)window.localStorage.setItem("replacePattern","我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
     var fileUrl=window.localStorage.getItem("fileUrl");
