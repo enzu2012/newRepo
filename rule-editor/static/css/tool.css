@@ -7,6 +7,10 @@ div#rule-editor {
     height: 700px;
 }
 
+body{
+    background: url(../img/background.jpg) no-repeat center center fixed;
+}
+
 div#rule-info {
     width: 100%;
 }
