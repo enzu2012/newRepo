@@ -45,6 +45,16 @@ function btnRuleEditOnClick() {
         })
     })
 }
+//查询规则数量
+function checkRuleNum(){
+    var ruleNums=$("textarea#save-space").val().match(/,rule-/gi);
+    return (!ruleNums)?"0":ruleNums.length;
+}
+//刷新规则数目显示
+function refreshRuleNum(){
+    //显示现有rules
+    $("em#rule-num-tag").text(checkRuleNum());
+}
 
 //生成编辑工具
 function editRules(objBtnRuleEdit) {
@@ -82,9 +92,7 @@ function editRules(objBtnRuleEdit) {
     var words = [];
     //标点符号数组
     var symbol = ["，", "。", "、", "？", "！", ",", ".", "?", "!"];
-    var rulesNum = $("textarea#save-space").val().match(/#visitorname/gi);
-    //显示现有rules
-    $("em#rule-num-tag").text((!rulesNum) ? "0" : rulesNum.length);
+    refreshRuleNum();
     //编辑工具按钮组字符串
     var ruleEditBtns = "<i class='btn btn-primary property fa fa-plus-square' style='margin-right: 10px'></i><i class='btn btn-danger ignore fa fa-minus-square' style='display: none;margin-right: 10px'></i>";
     //对匹配到的测试结果进行处理
@@ -499,7 +507,7 @@ $(function () {
         } else {
             alert("rules已存在");
         }
-        $("em#rule-num-tag").text((!saveSpace.val().match(/#visitorname/)) ? "0" : saveSpace.val().match(/#visitorname/gi).length);
+        refreshRuleNum();
     });
     //恢复默认按钮事件绑定s
     $("button.btn-default").on("click", function () {
@@ -561,6 +569,7 @@ $(function () {
         var saveSpace = $("textarea#save-space");
         $(saveSpace).val("");
         window.localStorage.setItem("rulesData", $(saveSpace).val());
+        $("em#rule-num-tag").text("0");
     });
     //预设名打开按钮事件绑定
     $("button.btn-open").each(function () {
