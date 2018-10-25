@@ -457,6 +457,53 @@ function createRestrictTool() {
     createRule();
 }
 
+//查找重复项函数
+
+function removeDuplicateItems(){
+    //alert("去重");
+    var text = $("#id_knowledge").val();
+    var textPure="";
+    var items=[];
+    var itemsRemoved=[];
+    var itemsDuplicate=[];
+    var type=0;
+    if(text.indexOf("+")==-1){
+        items=text.split("\n");
+        type=10;
+    }else{
+        items=text.split("+");
+        type=20;
+    }
+    if(items.length){
+        alert(items.length);
+        itemsRemoved=items.filter(function (item, index, arr) {
+            if(arr.indexOf(item)===index){
+                return true;
+            }else{
+                if(itemsDuplicate.indexOf(item)===-1){
+                    itemsDuplicate.push(item)
+                }
+                return false;
+            }
+        });
+    }
+    if(type===10){
+        for(var i=0;i<itemsRemoved.length;i++){
+            textPure+=itemsRemoved[i]+"\n";
+        }
+    }else if(type===20){
+        for(var j=0;j<itemsRemoved.length;j++){
+            textPure+=itemsRemoved[j]+"\+";
+        }
+    }
+    var textDuplicate="";
+    for(var k=0;k<itemsDuplicate.length;k++){
+        textDuplicate+=itemsDuplicate[k]+",";
+    }
+    alert("重复项有："+textDuplicate);
+    $("#id_knowledge").val(textPure);
+}
+
 //加载完毕执行
 
 $(function () {
@@ -698,5 +745,10 @@ $(function () {
         }
         fileTextarea.val(resultStr);
     });*/
+
+    //去除重复项按钮函数绑定
+    $("input#bth-remove-duplicate-item").on("click",function(){
+        removeDuplicateItems();
+    });
 
 });
