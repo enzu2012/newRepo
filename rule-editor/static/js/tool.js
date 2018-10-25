@@ -475,7 +475,6 @@ function removeDuplicateItems(){
         type=20;
     }
     if(items.length){
-        alert(items.length);
         itemsRemoved=items.filter(function (item, index, arr) {
             if(arr.indexOf(item)===index){
                 return true;
@@ -500,7 +499,7 @@ function removeDuplicateItems(){
     for(var k=0;k<itemsDuplicate.length;k++){
         textDuplicate+=itemsDuplicate[k]+",";
     }
-    alert("重复项有："+textDuplicate);
+    alert("原有条目："+items.length+"\n重复条目："+itemsDuplicate.length+"\n去重后条目："+itemsRemoved.length+"\n重复项有："+textDuplicate);
     $("#id_knowledge").val(textPure);
 }
 
