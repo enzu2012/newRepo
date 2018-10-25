@@ -459,48 +459,78 @@ function createRestrictTool() {
 
 //查找重复项函数
 
-function removeDuplicateItems(){
+function removeDuplicateItems() {
     //alert("去重");
     var text = $("#id_knowledge").val();
-    var textPure="";
-    var items=[];
-    var itemsRemoved=[];
-    var itemsDuplicate=[];
-    var type=0;
-    if(text.indexOf("+")==-1){
-        items=text.split("\n");
-        type=10;
-    }else{
-        items=text.split("+");
-        type=20;
+    var textPure = "";
+    var items = [];
+    var itemsRemoved = [];
+    var itemsDuplicate = [];
+    var type = 0;
+    if (text.indexOf("+") == -1) {
+        items = text.split("\n");
+        type = 10;
+    } else {
+        items = text.split("+");
+        type = 20;
     }
-    if(items.length){
-        itemsRemoved=items.filter(function (item, index, arr) {
-            if(arr.indexOf(item)===index){
+    if (items.length) {
+        itemsRemoved = items.filter(function (item, index, arr) {
+            if (arr.indexOf(item) === index) {
                 return true;
-            }else{
-                if(itemsDuplicate.indexOf(item)===-1){
+            } else {
+                if (itemsDuplicate.indexOf(item) === -1) {
                     itemsDuplicate.push(item)
                 }
                 return false;
             }
         });
     }
-    if(type===10){
-        for(var i=0;i<itemsRemoved.length;i++){
-            textPure+=itemsRemoved[i]+"\n";
+    if (type === 10) {
+        for (var i = 0; i < itemsRemoved.length; i++) {
+            textPure += itemsRemoved[i] + "\n";
         }
-    }else if(type===20){
-        for(var j=0;j<itemsRemoved.length;j++){
-            textPure+=itemsRemoved[j]+"\+";
+    } else if (type === 20) {
+        for (var j = 0; j < itemsRemoved.length; j++) {
+            textPure += itemsRemoved[j] + "\+";
         }
     }
-    var textDuplicate="";
-    for(var k=0;k<itemsDuplicate.length;k++){
-        textDuplicate+=itemsDuplicate[k]+",";
+    var textDuplicate = "";
+    for (var k = 0; k < itemsDuplicate.length; k++) {
+        textDuplicate += itemsDuplicate[k] + ",";
     }
-    alert("原有条目："+items.length+"\n重复条目："+itemsDuplicate.length+"\n去重后条目："+itemsRemoved.length+"\n重复项有："+textDuplicate);
+    alert("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + "\n去重后条目：" + itemsRemoved.length + "\n重复项有：" + textDuplicate);
     $("#id_knowledge").val(textPure);
+}
+
+function findDuplicateItems(){
+    var textArea = $("#id_knowledge");
+    var text=textArea.val();
+    var items = [];
+    var itemsDuplicate = [];
+    if (text.indexOf("+") === -1) {
+        items = text.split("\n");
+    } else {
+        items = text.split("+");
+    }
+    if (items.length) {
+        itemsDuplicate = items.filter(function (item, index, arr) {
+            if (arr.indexOf(item) !== index) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+    var textDuplicate = "";
+    for (var k = 0; k < itemsDuplicate.length; k++) {
+        textDuplicate += itemsDuplicate[k] + "\n";
+    }
+    if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length +"\n是否获取重复条目")){
+        textArea.val(textDuplicate);
+    }
+
+
 }
 
 //加载完毕执行
@@ -712,42 +742,17 @@ $(function () {
         }
         $(fileTextarea).val(fileRecovered);
     });
-    //配置文件查重按钮事件绑定
-    /*$("input#config-file-confirm").on("click",function(){
-        var fileTextarea=$("textarea#id_knowledge");
-        var fileOfConfig=fileTextarea.val();
-        var configs=fileOfConfig.split("\n");
-        var configsSplit=configs;
-        var configsStr=configs;
-        var indexNum;
-        var resultStr="";
-        for(var c=0;c<configs.length;c++){
-            //alert(configs[c]);
-            configsSplit[c]=(configs[c].split("+").sort());
-            //alert(configsSplit[c]);
-            configsStr[c]="";
-            for(var d=0;d<configsSplit[c].length;d++){
-                alert("拼接");
-                configsStr[c]=configsStr[c]+configsSplit[c][d];
-            }
-        }
-        //alert(""+configs[0]);
-        for(var r=0;r<configsStr.length;r++){
-            for(var r2=0;r2<configsStr.length;r2++){
-                if(r!==r2){
-                    alert(configsStr[r]+"and"+configsStr[r2]);
-                    if(configsStr[r]===configsStr[r2]){
-                        resultStr+=configs[r]+"\n"+configs[r2]+"\n重复"+"\n";
-                    }
-                }
-            }
-        }
-        fileTextarea.val(resultStr);
-    });*/
+
 
     //去除重复项按钮函数绑定
     $("input#bth-remove-duplicate-item").on("click",function(){
         removeDuplicateItems();
     });
+
+    //查找重复项按钮函数绑定
+
+    $("input#bth-find-duplicate-items").on("click",function(){
+        findDuplicateItems();
+    })
 
 });
