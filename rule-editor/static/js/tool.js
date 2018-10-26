@@ -500,9 +500,9 @@ function removeDuplicateItems() {
     }
     var textDuplicate = "";
     for (var k = 0; k < itemsDuplicate.length; k++) {
-        textDuplicate += itemsDuplicate[k] + ",";
+        textDuplicate += itemsDuplicate[k] + "\n";
     }
-    if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + "\n去重后条目：" + itemsRemoved.length +((itemsDuplicate.length)? "\n？？是否去除重复部分？？\n重复部分:"+ textDuplicate:""))){
+    if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + "\n去重后条目：" + itemsRemoved.length +((itemsDuplicate.length)? "\n？？是否去除重复部分？？\n重复部分:\n"+ textDuplicate:""))){
         $("#id_knowledge").val(textPure);
     }
 }
@@ -534,7 +534,11 @@ function findDuplicateItems(){
         textDuplicate += itemsDuplicate[k] + "\n";
     }
     if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length +((itemsDuplicate.length)?"\n是否获取重复条目??":""))){
-        textArea.val(textDuplicate);
+        if(!itemsDuplicate.length){
+            return;
+        }else{
+            textArea.val(textDuplicate);
+        }
     }
 
 
