@@ -467,12 +467,12 @@ function removeDuplicateItems() {
     var itemsRemoved = [];
     var itemsDuplicate = [];
     var type = 0;
-    if (text.indexOf("+") == -1) {
+    if (text.indexOf("\n") === -1) {
+        items = text.split("\+");
+        type = 20;
+    } else {
         items = text.split("\n");
         type = 10;
-    } else {
-        items = text.split("+");
-        type = 20;
     }
     if (items.length) {
         items=items.filter(function(item){
@@ -529,6 +529,13 @@ function findDuplicateItems(){
             }
         });
     }
+    itemsDuplicate=itemsDuplicate.filter(function(item,index,self){
+        if((!item)||self.indexOf(item)!==index){
+            return false;
+        }else{
+            return true;
+        }
+    });
     var textDuplicate = "";
     for (var k = 0; k < itemsDuplicate.length; k++) {
         textDuplicate += itemsDuplicate[k] + "\n";
