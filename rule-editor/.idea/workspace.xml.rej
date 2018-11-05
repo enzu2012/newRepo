@@ -1,0 +1,16 @@
+diff a/rule-editor/.idea/workspace.xml b/rule-editor/.idea/workspace.xml	(rejected hunks)
+@@ -51,11 +51,11 @@
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="tool.js" pinned="false" current-in-tab="true">
++      <file leaf-file-name="tool.js" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/static/js/tool.js">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="683">
+-              <caret line="500" column="27" lean-forward="true" selection-start-line="500" selection-start-column="27" selection-end-line="500" selection-end-column="27" />
++            <state relative-caret-position="496">
++              <caret line="489" column="11" lean-forward="false" selection-start-line="489" selection-start-column="11" selection-end-line="489" selection-end-column="11" />
+               <folding>
+                 <marker date="1540881488419" expanded="true" signature="728:734" ph=" " />
+                 <marker date="1540881488419" expanded="true" signature="734:740" ph=" " />
