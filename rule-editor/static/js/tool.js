@@ -295,7 +295,7 @@ function createRule() {
             var restrictDefault = $(restrictLabel).text();
             if (restrict) {
                 if (restrict.length > 2) {
-                    if (restrict.indexOf("++") === 0) {
+                    if (restrict.indexOf("++") === 0||restrict.indexOf("+*")===0||restrict.indexOf("+%")===0) {
                         restrictString += restrictLabel.attr("data-index") + "=" + restrict + ",";
                     } else {
                         if (restrict.indexOf("++") > 0) {
