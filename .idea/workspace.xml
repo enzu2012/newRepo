@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1236215-48c5-42ee-a700-3261a4c98b7c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule-editor/static/js/tool.js" afterPath="$PROJECT_DIR$/rule-editor/static/js/tool.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule-editor/static/css/tool.css" afterPath="$PROJECT_DIR$/rule-editor/static/css/tool.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -30,8 +30,8 @@
       <file leaf-file-name="tool.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rule-editor/static/js/tool.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="299" column="28" lean-forward="true" selection-start-line="299" selection-start-column="28" selection-end-line="299" selection-end-column="28" />
+            <state relative-caret-position="5083">
+              <caret line="299" column="28" lean-forward="false" selection-start-line="299" selection-start-column="28" selection-end-line="299" selection-end-column="28" />
               <folding>
                 <marker date="1545450917790" expanded="true" signature="728:734" ph=" " />
                 <marker date="1545450917790" expanded="true" signature="734:740" ph=" " />
@@ -75,8 +75,8 @@
       <file leaf-file-name="tool.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rule-editor/static/css/tool.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="238">
+              <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -90,9 +90,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rule-editor/static/css/tool.css" />
         <option value="$PROJECT_DIR$/rule-editor/static/css/tool.css.rej" />
         <option value="$PROJECT_DIR$/rule-editor/static/js/tool.js" />
+        <option value="$PROJECT_DIR$/rule-editor/static/css/tool.css" />
       </list>
     </option>
   </component>
@@ -193,11 +193,12 @@
       <updated>1541398389724</updated>
       <workItem from="1541398392184" duration="120000" />
       <workItem from="1545450675208" duration="315000" />
+      <workItem from="1545809701113" duration="180000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="435000" />
+    <option name="totallyTimeSpent" value="615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -232,6 +233,65 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rule-editor/static/js/tool.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5083">
+          <caret line="299" column="28" lean-forward="true" selection-start-line="299" selection-start-column="28" selection-end-line="299" selection-end-column="28" />
+          <folding>
+            <marker date="1545450917790" expanded="true" signature="728:734" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="734:740" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="740:746" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="934:947" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="3371:3389" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="3454:3486" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="4994:5000" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="5000:5006" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="5006:5012" ph=" " />
+            <marker date="1545450917790" expanded="true" signature="7080:7099" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="7145:7162" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="7212:7225" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="7304:7321" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="7548:7561" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="7626:7643" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8160:8179" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8225:8242" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8292:8305" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8384:8401" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8592:8605" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="8670:8687" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="9014:9031" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="9081:9094" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="9173:9190" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="9375:9388" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="9453:9470" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="16447:16466" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="16520:16537" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="16626:16639" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="16840:16857" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="17035:17048" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="17129:17146" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="17252:17264" ph="..." />
+            <marker date="1545450917790" expanded="true" signature="17345:17362" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rule-editor/static/css/tool.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -292,18 +352,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/static/css/tool.css.rej" />
-    <entry file="file://$PROJECT_DIR$/rule-editor/static/css/tool.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/static/js/tool.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="299" column="28" lean-forward="true" selection-start-line="299" selection-start-column="28" selection-end-line="299" selection-end-column="28" />
+        <state relative-caret-position="5083">
+          <caret line="299" column="28" lean-forward="false" selection-start-line="299" selection-start-column="28" selection-end-line="299" selection-end-column="28" />
           <folding>
             <marker date="1545450917790" expanded="true" signature="728:734" ph=" " />
             <marker date="1545450917790" expanded="true" signature="734:740" ph=" " />
@@ -343,10 +395,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rule-editor/static/css/tool.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
         </state>
       </provider>
