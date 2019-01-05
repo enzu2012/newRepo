@@ -300,12 +300,12 @@ function createRule() {
                     } else {
                         if (restrict.indexOf("++") > 0) {
                             alert("序号为：" + restrictLabel.attr("data-index") + " 的词语限定中间不能出现(++)");
-                            $(this).val("");
+                            //$(this).val("");
                             return;
                         }
                         if (restrict.indexOf("+") === 0) {
                             alert("序号为：" + restrictLabel.attr("data-index") + " 的词语限定不能以（+）开头");
-                            $(this).val("");
+                            //$(this).val("");
                             return;
                         }
                         restrictString += restrictDefault + restrict + ",";
