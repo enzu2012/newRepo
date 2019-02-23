@@ -743,28 +743,25 @@ $(function () {
         //alert(rules.length);
         for (var i = 0; i < rules.length; i++) {
             if (rules[i]) {
-                if (rules[i].indexOf("|")) {
+                if (rules[i].indexOf("|")!==-1) {
                     rules[i] = rules[i].split("|")[0];
-                } else {
+                } else if(rules[i].indexOf("~")!==-1) {
                     rules[i] = rules[i].split("~")[0];
+                }else{
+                    rules[i]="";
                 }
-                do {
-                    rules[i] = rules[i].replace(/\[[^\]]*\]/gi, "");
-                    //alert(rules[i]);
-                } while (rules[i].indexOf("[") > -1)
+                rules[i] = rules[i].replace(/\[[^\]]*\]/gi, "");
+                rules[i] = rules[i].replace(/[QA:]/gi, "");
+                //alert(rules[i]);
             }
         }
-        var fileRecovered = "";
+        fileOfRules="";
         for (var j = 0; j < rules.length; j++) {
             if(rules[j]){
-                if(rules[j].indexOf("QA:")==0){
-                    rules[j]=rules[j].substring(3,rules[j].length);
-                    //alert(rules[j]);
-                }
-                fileRecovered += rules[j] + "\n";
+                fileOfRules += rules[j] + "\n";
             }
         }
-        $(fileTextarea).val(fileRecovered);
+        $(fileTextarea).val(fileOfRules);
     });
 
 
