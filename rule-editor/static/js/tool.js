@@ -751,7 +751,7 @@ $(function () {
                     rules[i]="";
                 }
                 rules[i] = rules[i].replace(/\[[^\]]*\]/gi, "");
-                rules[i] = rules[i].replace(/[QA:]/gi, "");
+                rules[i] = rules[i].replace(/QA:/gi, "");
                 //alert(rules[i]);
             }
         }
