@@ -1,0 +1,31 @@
+diff a/.idea/workspace.xml b/.idea/workspace.xml	(rejected hunks)
+@@ -20,8 +20,27 @@
+       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+         <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="714">
+-              <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
++            <state relative-caret-position="238">
++              <caret line="125" column="26" lean-forward="true" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
++              <folding>
++                <element signature="e#5771#5777#0" expanded="true" />
++                <element signature="e#5885#5891#0" expanded="true" />
++                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++                <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++                <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
++              </folding>
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="deptree.html" pinned="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/rule-editor/deptree.html">
++          <provider selected="true" editor-type-id="text-editor">
++            <state relative-caret-position="85">
++              <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+               <folding />
+             </state>
+           </provider>
