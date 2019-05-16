@@ -45,13 +45,15 @@ function btnRuleEditOnClick() {
         })
     })
 }
+
 //查询规则数量
-function checkRuleNum(){
-    var ruleNums=$("textarea#save-space").val().match(/,rule-/gi);
-    return (!ruleNums)?"0":ruleNums.length;
+function checkRuleNum() {
+    var ruleNums = $("textarea#save-space").val().match(/,rule-/gi);
+    return (!ruleNums) ? "0" : ruleNums.length;
 }
+
 //刷新规则数目显示
-function refreshRuleNum(){
+function refreshRuleNum() {
     //显示现有rules
     $("em#rule-num-tag").text(checkRuleNum());
 }
@@ -120,11 +122,11 @@ function editRules(objBtnRuleEdit) {
         }
     }
     //获取localstorage中的固定词组信息
-    var dataFixedWords=window.localStorage.getItem("dataPreFixedWords");
-    var fixedWords=dataFixedWords.split("\n");
+    var dataFixedWords = window.localStorage.getItem("dataPreFixedWords");
+    var fixedWords = dataFixedWords.split("\n");
     //alert(fixedWords);
     //将固定词组放入words数组
-    for(var i=0;i<fixedWords.length;i++){
+    for (var i = 0; i < fixedWords.length; i++) {
         words.push(fixedWords[i]);
     }
     words = words.sort().reverse();
@@ -155,8 +157,8 @@ function editRules(objBtnRuleEdit) {
                 ruleEditToolSpace.append("<strong data-type='ignore' class='h3'>" + sentence.substring(0, minIndex) + "</strong>" + ruleEditBtns);
                 sentence = sentence.substring(minIndex, sentence.length);
                 //alert(sentence);
-                loopNum=0;
-            }else{
+                loopNum = 0;
+            } else {
                 ruleEditToolSpace.html("");
                 $("div#rule-editor-tool").show();
                 $("textarea#rule").val("关键词匹配错误，请检查\"" + sentence.substring(0, 4) + "\"位置");
@@ -295,7 +297,7 @@ function createRule() {
             var restrictDefault = $(restrictLabel).text();
             if (restrict) {
                 if (restrict.length > 2) {
-                    if (restrict.indexOf("++") === 0||restrict.indexOf("+*")===0||restrict.indexOf("+%")===0) {
+                    if (restrict.indexOf("++") === 0 || restrict.indexOf("+*") === 0 || restrict.indexOf("+%") === 0) {
                         restrictString += restrictLabel.attr("data-index") + "=" + restrict + ",";
                     } else {
                         if (restrict.indexOf("++") > 0) {
@@ -445,10 +447,10 @@ function createRestrictTool() {
     });
     $("div#restrict-space").find("input.none-restrict").each(function () {
         $(this).on("click", function () {
-            var txtRestrict=$(this).parent().prev().find("input");
-            if(txtRestrict.val()=="none"){
+            var txtRestrict = $(this).parent().prev().find("input");
+            if (txtRestrict.val() == "none") {
                 txtRestrict.val("");
-            }else{
+            } else {
                 txtRestrict.val("none");
             }
             createRule();
@@ -475,8 +477,8 @@ function removeDuplicateItems() {
         type = 10;
     }
     if (items.length) {
-        items=items.filter(function(item){
-            return (!item)?0:1 ;
+        items = items.filter(function (item) {
+            return (!item) ? 0 : 1;
         });
         itemsRemoved = items.filter(function (item, index, arr) {
             if (arr.indexOf(item) === index) {
@@ -502,14 +504,14 @@ function removeDuplicateItems() {
     for (var k = 0; k < itemsDuplicate.length; k++) {
         textDuplicate += itemsDuplicate[k] + "\n";
     }
-    if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + "\n去重后条目：" + itemsRemoved.length +((itemsDuplicate.length)? "\n？？是否去除重复部分？？\n重复部分:\n"+ textDuplicate:""))){
+    if (confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + "\n去重后条目：" + itemsRemoved.length + ((itemsDuplicate.length) ? "\n？？是否去除重复部分？？\n重复部分:\n" + textDuplicate : ""))) {
         $("#id_knowledge").val(textPure);
     }
 }
 
-function findDuplicateItems(){
+function findDuplicateItems() {
     var textArea = $("#id_knowledge");
-    var text=textArea.val();
+    var text = textArea.val();
     var items = [];
     var itemsDuplicate = [];
     if (text.indexOf("\n") === -1) {
@@ -518,8 +520,8 @@ function findDuplicateItems(){
         items = text.split("\n");
     }
     if (items.length) {
-        items=items.filter(function(item){
-            return (!item)?0:1;
+        items = items.filter(function (item) {
+            return (!item) ? 0 : 1;
         });
         itemsDuplicate = items.filter(function (item, index, arr) {
             if (arr.indexOf(item) !== index) {
@@ -529,10 +531,10 @@ function findDuplicateItems(){
             }
         });
     }
-    itemsDuplicate=itemsDuplicate.filter(function(item,index,self){
-        if((!item)||self.indexOf(item)!==index){
+    itemsDuplicate = itemsDuplicate.filter(function (item, index, self) {
+        if ((!item) || self.indexOf(item) !== index) {
             return false;
-        }else{
+        } else {
             return true;
         }
     });
@@ -540,18 +542,25 @@ function findDuplicateItems(){
     for (var k = 0; k < itemsDuplicate.length; k++) {
         textDuplicate += itemsDuplicate[k] + "\n";
     }
-    if(confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length +((itemsDuplicate.length)?"\n是否获取重复条目??":""))){
-        if(!itemsDuplicate.length){
+    if (confirm("原有条目：" + items.length + "\n重复条目：" + itemsDuplicate.length + ((itemsDuplicate.length) ? "\n是否获取重复条目??" : ""))) {
+        if (!itemsDuplicate.length) {
             return;
-        }else{
+        } else {
             textArea.val(textDuplicate);
         }
     }
 }
 
+function wipeSaveSpace() {
+    var saveSpace = $("textarea#save-space");
+    $(saveSpace).val("");
+    window.localStorage.setItem("rulesData", $(saveSpace).val());
+    $("em#rule-num-tag").text("0");
+}
+
 //工具使用说明函数
 
-function toolNotice (){
+function toolNotice() {
     alert("生成工具：\n将测试单元内容放入编辑区，点击按钮生成rule编辑工具。\n人称替换：\n点击按钮将按照设置规则将编辑区对应内容替换，" +
         "替换前可以使用读取替换按钮查看替换规则\n规则还原：\n将规则放入编辑区，点击按钮可将规则还原成对应句子\n查找重复项：\n将内容放入编辑区，" +
         "点击按钮可查找重复项目。\nPS：内容可以是关键词，将按<行>为单位查找重复部分，也可以是《A+B+c+d+x+A+b》格式，如果内容为此格式不要存在空格");
@@ -566,10 +575,10 @@ $(function () {
     if (!presetRestrict) window.localStorage.setItem("dataPreRestrictName", "空");
     var presetFixedWords = window.localStorage.getItem("dataPreFixedWords");
     if (!presetFixedWords) window.localStorage.setItem("dataPreFixedWords", "大前天\n前天\n昨天\n今天\n明天\n后天\n大后天\n星期一\n星期二\n星期三\n星期四\n星期五\n星期六\n星期天");
-    var replacePattern=window.localStorage.getItem("replacePattern");
-    if(!replacePattern)window.localStorage.setItem("replacePattern","我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
-    var fileUrl=window.localStorage.getItem("fileUrl");
-    if(!fileUrl)window.localStorage.setItem("fileUrl","空");
+    var replacePattern = window.localStorage.getItem("replacePattern");
+    if (!replacePattern) window.localStorage.setItem("replacePattern", "我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
+    var fileUrl = window.localStorage.getItem("fileUrl");
+    if (!fileUrl) window.localStorage.setItem("fileUrl", "空");
 
     //加载编辑工具已保存rules
     $("textarea#save-space").val(window.localStorage.getItem("rulesData"));
@@ -666,11 +675,16 @@ $(function () {
     });
     //清空按钮事件绑定
     $("button.clean-save-space").on("click", function () {
-        var saveSpace = $("textarea#save-space");
-        $(saveSpace).val("");
-        window.localStorage.setItem("rulesData", $(saveSpace).val());
-        $("em#rule-num-tag").text("0");
+        wipeSaveSpace();
+
     });
+
+    //关闭并清空按钮事件绑定
+    $("button#close-and-wipe-save-space").on("click", function () {
+        wipeSaveSpace();
+        $("div#rule-editor").hide();
+    });
+
     //预设名打开按钮事件绑定
     $("button.btn-open").each(function () {
         $(this).on("click", function () {
@@ -695,42 +709,42 @@ $(function () {
         })
     });
     //替换规则按钮事件绑定
-    $("input#replace-pattern").on("click",function () {
-        var dataItem=$(this).attr("data-item");
-        var dataStatus=$(this).attr("data-status");
-        var optionSpcace=$("textarea#id_knowledge");
-        if(dataStatus==="read"){
-            var pattern=window.localStorage.getItem(dataItem);
+    $("input#replace-pattern").on("click", function () {
+        var dataItem = $(this).attr("data-item");
+        var dataStatus = $(this).attr("data-status");
+        var optionSpcace = $("textarea#id_knowledge");
+        if (dataStatus === "read") {
+            var pattern = window.localStorage.getItem(dataItem);
             $(optionSpcace).val(pattern);
-            $(this).attr("data-status","write");
-            $(this).attr("value","保存替换规则");
+            $(this).attr("data-status", "write");
+            $(this).attr("value", "保存替换规则");
         }
-        if(dataStatus==="write"){
-            window.localStorage.setItem(dataItem,$("textarea#id_knowledge").val());
-            $(this).attr("data-status","read");
-            $(this).attr("value","读取替换规则");
+        if (dataStatus === "write") {
+            window.localStorage.setItem(dataItem, $("textarea#id_knowledge").val());
+            $(this).attr("data-status", "read");
+            $(this).attr("value", "读取替换规则");
             $(optionSpcace).val("");
         }
     });
     //人称替换按钮事件绑定
-    $("input#replace-nr").on("click",function () {
-        var fileTextarea=$("textarea#id_knowledge");
-        var replaceFile=$(fileTextarea).val();
-        var replacePattern=window.localStorage.getItem("replacePattern");
-        var patterns=replacePattern.split("\n");
-        if(patterns.length!==0){
+    $("input#replace-nr").on("click", function () {
+        var fileTextarea = $("textarea#id_knowledge");
+        var replaceFile = $(fileTextarea).val();
+        var replacePattern = window.localStorage.getItem("replacePattern");
+        var patterns = replacePattern.split("\n");
+        if (patterns.length !== 0) {
             patterns.sort().reverse();
         }
-        var matchWords=[],replaceWords=[];
-        for(var num=0;num<patterns.length;num++){
-            var pattern=patterns[num].split("-");
-            matchWords[num]=pattern[0];
-            replaceWords[num]=pattern[1];
+        var matchWords = [], replaceWords = [];
+        for (var num = 0; num < patterns.length; num++) {
+            var pattern = patterns[num].split("-");
+            matchWords[num] = pattern[0];
+            replaceWords[num] = pattern[1];
         }
-        for(var num2=0;num2<matchWords.length;num2++){
+        for (var num2 = 0; num2 < matchWords.length; num2++) {
             //alert(matchWords[num2]);
-            var regStr="/"+matchWords[num2]+"/gi";
-            replaceFile=replaceFile.replace(eval(regStr),replaceWords[num2]);
+            var regStr = "/" + matchWords[num2] + "/gi";
+            replaceFile = replaceFile.replace(eval(regStr), replaceWords[num2]);
             //alert(replaceFile);
         }
         $(fileTextarea).val(replaceFile);
@@ -743,21 +757,21 @@ $(function () {
         //alert(rules.length);
         for (var i = 0; i < rules.length; i++) {
             if (rules[i]) {
-                if (rules[i].indexOf("|")!==-1) {
+                if (rules[i].indexOf("|") !== -1) {
                     rules[i] = rules[i].split("|")[0];
-                } else if(rules[i].indexOf("~")!==-1) {
+                } else if (rules[i].indexOf("~") !== -1) {
                     rules[i] = rules[i].split("~")[0];
-                }else{
-                    rules[i]="";
+                } else {
+                    rules[i] = "";
                 }
                 rules[i] = rules[i].replace(/\[[^\]]*\]/gi, "");
                 rules[i] = rules[i].replace(/QA:/gi, "");
                 //alert(rules[i]);
             }
         }
-        fileOfRules="";
+        fileOfRules = "";
         for (var j = 0; j < rules.length; j++) {
-            if(rules[j]){
+            if (rules[j]) {
                 fileOfRules += rules[j] + "\n";
             }
         }
@@ -766,13 +780,13 @@ $(function () {
 
 
     //去除重复项按钮函数绑定
-    $("input#bth-remove-duplicate-item").on("click",function(){
+    $("input#bth-remove-duplicate-item").on("click", function () {
         removeDuplicateItems();
     });
 
     //查找重复项按钮函数绑定
 
-    $("input#bth-find-duplicate-items").on("click",function(){
+    $("input#bth-find-duplicate-items").on("click", function () {
         findDuplicateItems();
     })
 
