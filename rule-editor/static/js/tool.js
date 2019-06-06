@@ -194,11 +194,7 @@ function editRules(objBtnRuleEdit) {
         "</div>" +
         "</form>";
     ruleNameToolSpace.html(ruleNameToolHtml);
-    //生成关键词序号下拉框及输入框
-    var optionHtml = "";
-    for (var keywordNum = 1; keywordNum <= 6; keywordNum++) {
-        optionHtml += "<option class='form-control' value='[" + keywordNum + "]'>[" + keywordNum + "]</option>";
-    }
+    //拼接关键词序号选择框及文本框html字符串
     var keywordsNumToolHtml = "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
         "<div class='form-group' style='margin-right: 5px'>" +
         "<label class='form-control' style='width: 120px;'>关键词-前：</label>" +
@@ -210,7 +206,6 @@ function editRules(objBtnRuleEdit) {
         "<div class='form-group' style='margin-right: 5px'>" +
         "<select class='form-control select-fixed' id='keyword-num-ahead'>" +
         "<option value='visitorname' selected>visitorname</option>" +
-        optionHtml +
         "</select>" +
         "</div>" +
         "</form>" +
@@ -224,15 +219,29 @@ function editRules(objBtnRuleEdit) {
         "</div>" +
         "<div class='form-group' style='margin-right: 5px'>" +
         "<select class='form-control select-fixed' id='keyword-num-behind'>" +
-        optionHtml +
+        "<option value='visitorname' selected>visitorname</option>" +
         "</select>" +
         "</div>" +
         "</form>";
+    //插入关键词序号默认设置html字符串
     keywordsNumToolSpace.html(keywordsNumToolHtml);
+    changeKeywordsNumOption();
     ruleEditToolSpace.show();
     bandForRuleEditBtns();
     createRule();
     return;
+}
+
+//修改关键词序号选择框内容
+function changeKeywordsNumOption() {
+    var keywordNum = $("#rule-edit-tool").find("strong[data-type='property']").length;
+    //生成关键词序号下拉框及输入框
+    var optionHtml = "<option value='visitorname' selected>visitorname</option>";
+    for (var i = 1; i <= keywordNum; i++) {
+        optionHtml += "<option class='form-control' value='[" + i + "]'>[" + i + "]</option>";
+    }
+    $("#keyword-num-ahead").html(optionHtml);
+    $("#keyword-num-behind").html(optionHtml);
 }
 
 //为编辑工具按钮绑定事件
@@ -241,11 +250,13 @@ function bandForRuleEditBtns() {
     $("i.property").each(function () {
         $(this).on("click", function () {
             makeWordProperty(this);
+            changeKeywordsNumOption();
         })
     });
     $("i.ignore").each(function () {
         $(this).on("click", function () {
             makeWordIgnore(this);
+            changeKeywordsNumOption();
         });
     });
     //QA按钮事件绑定
