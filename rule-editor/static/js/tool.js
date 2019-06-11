@@ -577,6 +577,22 @@ function toolNotice() {
         "点击按钮可查找重复项目。\nPS：内容可以是关键词，将按<行>为单位查找重复部分，也可以是《A+B+c+d+x+A+b》格式，如果内容为此格式不要存在空格");
 }
 
+//打开关闭设置页面
+
+function openPageSetting(){
+    $("div#page-setting").show();
+}
+
+function closePageSetting() {
+    $("div#page-setting").hide();
+}
+
+//更换背景颜色函数
+
+function changeBackgroundColorOfBody(color){
+    $("body").attr("style","background-color:"+color);
+}
+
 //加载完毕执行
 
 $(function () {
@@ -590,6 +606,9 @@ $(function () {
     if (!replacePattern) window.localStorage.setItem("replacePattern", "我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
     var fileUrl = window.localStorage.getItem("fileUrl");
     if (!fileUrl) window.localStorage.setItem("fileUrl", "空");
+    //加载本地存储背景颜色
+    var backgroundColor =window.localStorage.getItem("backgroundColorValue");
+    if(backgroundColor)changeBackgroundColorOfBody(backgroundColor);
 
     //加载编辑工具已保存rules
     $("textarea#save-space").val(window.localStorage.getItem("rulesData"));
@@ -799,6 +818,19 @@ $(function () {
 
     $("input#bth-find-duplicate-items").on("click", function () {
         findDuplicateItems();
-    })
+    });
+
+    //更换颜色函数绑定（div.color-card）
+    $("div.color-card").each(function () {
+        $(this).on("click",function () {
+            var color = $(this).attr("data-color-value");
+            if(color){
+                changeBackgroundColorOfBody(color);
+                window.localStorage.setItem("backgroundColorValue",color);
+            }else{
+                alert("未获取到颜色信息");
+            }
+        });
+    });
 
 });

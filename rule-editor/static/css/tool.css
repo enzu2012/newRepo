@@ -7,16 +7,18 @@ div#rule-editor {
     height: 700px;
 }
 
-body{
+body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color: lightslategray;
     /*background: url(../img/background.jpg) no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-textarea#id_knowledge{
+
+textarea#id_knowledge {
     filter: alpha(opacity=50);
     -moz-opacity: .5;
     opacity: .5;
@@ -32,6 +34,26 @@ div#rule-editor-tool {
     top: 80px;
     left: 20px;
     width: 90%;
+}
+
+div#page-setting {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    height: 400px;
+}
+
+div.color-card{
+    float: left;
+    width: 50px;
+    height: 50px;
 }
 
 div.canvas-space {
