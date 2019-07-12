@@ -597,27 +597,31 @@ function changeBackgroundColorOfBody(color) {
 function findMissingProperty() {
     var propertySelected = [];
     var propertyRelationSelected;
-    var propertyRelationShouldHave=[];
+    var propertyRelationShouldHave = [];
     var propertyName;
-    var propertyRelationExist=["operation_eqp","operation_itf","operation_location","operation_deg","operation_parm","operation_direction",
-        "ask_time","eqp_to","operation_prf","eqp_all","eqp_exclude","eqp_parm","eqp_itf","eqp_verbalize","eqp_mod","parm_verbalize",
-        "deg_eqp","deg_floor","deg_parm","floor_operation","floor_eqp","floor_location","floor_all","floor_exclude","floor_mod",
-        "floor_verbalize","location_deg","location_eqp","location_all","location_exclude","location_mod","location_verbalize",
-        "all_operation","all_deg","close_mod","go_location","go_floor","to_deg","polarity_parm","polarity_eqp","search_time","search_period","search_format_time","search_hour","search_minute","search_eqp","search_type","search_location","search_floor","howmany_hours","howmany_minutes","operation_howlog","operation_cycle","operation_time","cycle_time","cycle_eqp","time_eqp","operation_period","period_eqp","cycle_period","period_time","operation_date","date_eqp","date_time","date_period"];
+    var propertyRelationExist = ["operation_eqp", "operation_itf", "operation_location", "operation_deg", "operation_parm", "operation_direction",
+        "ask_time", "eqp_to", "operation_prf", "eqp_all", "eqp_exclude", "eqp_parm", "eqp_itf", "eqp_verbalize", "eqp_mod", "parm_verbalize",
+        "deg_eqp", "deg_floor", "deg_parm", "floor_operation", "floor_eqp", "floor_location", "floor_all", "floor_exclude", "floor_mod",
+        "floor_verbalize", "location_deg", "location_eqp", "location_all", "location_exclude", "location_mod", "location_verbalize",
+        "all_operation", "all_deg", "close_mod", "go_location", "go_floor", "to_deg", "polarity_parm", "polarity_eqp", "search_time", "search_period", "search_format_time", "search_hour", "search_minute", "search_eqp", "search_type", "search_location", "search_floor", "howmany_hours", "howmany_minutes", "operation_howlog", "operation_cycle", "operation_time", "cycle_time", "cycle_eqp", "time_eqp", "operation_period", "period_eqp", "cycle_period", "period_time", "operation_date", "date_eqp", "date_time", "date_period"];
     //查找状态为selected的变量卡片
     $("div#space-property-card").find("div.property-card[data-card-status='selected']").each(function () {
         //alert($(this).text());
         propertyName = $(this).attr("data-property-name").split("，");
-            propertySelected.push(propertyName);
+        propertySelected.push(propertyName);
     });
+    if (propertySelected.length < 2) {
+        alert("选中信息点不能少于2");
+        return
+    }
     //alert(propertySelected.length+":"+propertySelected.toString());
-    for(var ps_a=0;ps_a<propertySelected.length;ps_a++){
-        for(var ps_b=0;ps_b<propertySelected.length;ps_b++){
-            if(ps_a===ps_b)continue;
-            propertyRelationSelected=propertySelected[ps_a][0]+"_"+propertySelected[ps_b][0];
+    for (var ps_a = 0; ps_a < propertySelected.length; ps_a++) {
+        for (var ps_b = 0; ps_b < propertySelected.length; ps_b++) {
+            if (ps_a === ps_b) continue;
+            propertyRelationSelected = propertySelected[ps_a][0] + "_" + propertySelected[ps_b][0];
             //alert(propertyRelationSelected);
-            if(propertyRelationExist.indexOf(propertyRelationSelected)!==-1&&propertyRelationShouldHave.indexOf(propertyRelationSelected)===-1){
-                propertyRelationShouldHave.push(propertyRelationSelected+"");
+            if (propertyRelationExist.indexOf(propertyRelationSelected) !== -1 && propertyRelationShouldHave.indexOf(propertyRelationSelected) === -1) {
+                propertyRelationShouldHave.push(propertyRelationSelected + "");
             }
         }
     }
@@ -626,45 +630,70 @@ function findMissingProperty() {
     var propertyNameChineseA;
     var propertyNameChineseB;
     var propertyNames;
-
-    if (!formInfo) {
-        var propertyRealationCardsHtml="";
-        for(var prsh in propertyRelationShouldHave){
-            propertyNameChineseA="";
-            propertyNameChineseB="";
-            propertyNames=propertyRelationShouldHave[prsh].split("_");
-            for(var ps in propertySelected){
-                //alert(propertyNames[0]+":"+propertySelected[ps][0]+"-------"+propertyNames[0]+":"+propertySelected[ps][0]);
-                if(propertyNames[0]===propertySelected[ps][0]){
-                    propertyNameChineseA=propertySelected[ps][1];
-                }else if(propertyNames[1]===propertySelected[ps][0]){
-                    propertyNameChineseB=propertySelected[ps][1]
-                }
-            }
-            if(propertyNameChineseA===""||propertyNameChineseB===""){
-                alert("获取中文变量名出错");
-                break;
-            }else{
-                propertyRealationCardsHtml+="<div class='property-relation-card txt-black text-center default' data-card-status='default'>"
-                    +propertyNameChineseA+":"+propertyNameChineseB+"("+propertyRelationShouldHave[prsh]+")"+"</div>"
+    var propertyRelationCardsHtml = "";
+    for (var prsh in propertyRelationShouldHave) {
+        propertyNameChineseA = "";
+        propertyNameChineseB = "";
+        propertyNames = propertyRelationShouldHave[prsh].split("_");
+        for (var ps in propertySelected) {
+            //alert(propertyNames[0]+":"+propertySelected[ps][0]+"-------"+propertyNames[0]+":"+propertySelected[ps][0]);
+            if (propertyNames[0] === propertySelected[ps][0]) {
+                propertyNameChineseA = propertySelected[ps][1];
+            } else if (propertyNames[1] === propertySelected[ps][0]) {
+                propertyNameChineseB = propertySelected[ps][1]
             }
         }
-        $("div#space-property-relation-card").html(propertyRealationCardsHtml);
-        return;
+        if (propertyNameChineseA === "" || propertyNameChineseB === "") {
+            alert("获取中文变量名出错");
+            break;
+        } else {
+            propertyRelationCardsHtml += "<div class='property-relation-card txt-black text-center selected' data-card-status='default'>"
+                + propertyNameChineseA + ":" + propertyNameChineseB + "(" + propertyRelationShouldHave[prsh] + ")" + "</div>"
+        }
     }
-    if (formInfo.indexOf("main_zhuiwen_httppost") === -1) {
-        alert("此功能只能处理智能家居bot表单信息");
-        return;
+    $("div#space-property-relation-card").html(propertyRelationCardsHtml);
+
+    if (!formInfo) return;
+    if (formInfo.indexOf("\n") !== -1){
+        var formInfoLines=formInfo.split("\n");
+        for(var fi in formInfoLines){
+            if(formInfoLines[fi].indexOf("chat_key")===-1){
+                continue;
+            }else {
+                formInfo=formInfoLines[fi].split(" : ")[1];
+                break;
+            }
+        }
     }
-    var allProperty = [];
-    //alert(formInfo.indexOf(" : "));
-    formInfo = (formInfo.indexOf(" : ") !== -1) ? (formInfo.split(" : ")[1]) : formInfo;
+    //有效正则：/\_\d/gi         /[_]\d/gi
+    formInfo = formInfo.replace(/\_\d/g, "");
     //alert(formInfo);
+    var allPropertyRelationInForm = [];
+    formInfo = (formInfo.indexOf(" : ") !== -1) ? (formInfo.split(" : ")[1]) : formInfo;
     formInfo = formInfo.split(",");
-    //alert(formInfo[0]);
+    var propertyRelationInForm;
+    //alert(formInfo.toString());
+    for (var fi in formInfo) {
+        propertyRelationInForm = formInfo[fi].split("=")[0];
+        if (propertyRelationInForm.indexOf("_") === -1) continue;
+        if (allPropertyRelationInForm.indexOf(propertyRelationInForm) === -1) {
+            allPropertyRelationInForm.push(propertyRelationInForm);
+        }
+    }
+    //alert(allPropertyRelationInForm.toString());
+    $("div.property-relation-card").each(function () {
+        var prn = $(this).text();
+        prn = prn.match(/\([^)]*\)/)[0];
+        prn = prn.substring(1, prn.length - 1);
+        //alert(prn+":::::"+allPropertyRelationInForm.toString());
+        //alert(allPropertyRelationInForm.indexOf(prn));
+        if (allPropertyRelationInForm.indexOf(prn) !== -1) {
+            $(this).toggleClass("selected").toggleClass("default");
+        }
+    });
 }
 
-//
+//变量卡片恢复默认
 function makePropertyCardsDefault() {
     $("div#space-property-card").find("div.property-card").each(function () {
         $(this).removeClass("selected").addClass("default");
