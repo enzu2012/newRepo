@@ -57,25 +57,26 @@
                 <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
                         id="submit-id-submit"/>-->
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="bth-find-duplicate-items" value="查找重复项" class="btn button white" />
+                    <input id="btn-find-duplicate-items" value="查找重复项" class="btn button white" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <input id="replace-pattern" value="读取替换规则" class="btn button white" data-status="read" data-item="replacePattern"/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="bth-remove-duplicate-item" value="去除重复项" class="btn button white"/>
+                    <input id="btn-remove-duplicate-item" value="去除重复项" class="btn button white"/>
                 </div>
             </div>
             <div class="row">
                 <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
                         id="submit-id-submit"/>-->
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="bth-tool-notice" value="功能说明" class="btn button white" onclick="toolNotice()"/>
+                    <input id="btn-tool-notice" value="功能说明" class="btn button white" onclick="toolNotice()"/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="bth-change-background-color" value="更改背景颜色" class="btn button white" onclick="openPageSetting()"/>
+                    <input id="btn-change-background-color" value="更改背景颜色" class="btn button white" onclick="openPageSetting()"/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
+                    <input id="btn-open-page-find-missing-property" value="智能家居工具" class="btn button white" >
                 </div>
             </div>
         </div>
@@ -214,7 +215,7 @@
             </div>
         </div>
     </div>
-    <div id="page-setting" class="collapse">
+    <div id="page-setting" class="collapse page-middle">
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 点击对应颜色更换
@@ -323,7 +324,61 @@
                 <div class="color-card txt-white text-center" data-color-value="#ff2121" style="background-color:#ff2121">大红</div>
             </div>
             <div class="panel-footer text-center">
-                <button class="bth btn-warning btn-xs"  onclick="closePageSetting()" >关闭</button>
+                <button class="btn btn-warning btn-xs"  onclick="closePageSetting()" >关闭</button>
+            </div>
+        </div>
+    </div>
+    <div id="page-find-missing-property" class="collapse page-middle">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                查找缺失变量
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12" id="space-property-card">
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="operation，操作">操作</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="eqp，电器">电器</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="parm，参数">参数</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="itf，界面">界面</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="deg，程度">程度</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="floor，楼层">楼层</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="location，地点">地点</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="direction，方向">方向</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="mod，模式">模式</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="polarity，极性">极性</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="search，搜索">搜索</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="format_time，格式时间">格式时间</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="eqp，设备">设备</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="all，所有">所有</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="verbalize，描述">描述</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="close，关闭">关闭</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="exclude，除了">关闭</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="go，去">去</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="to，到">到</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="howmany，多少">多少</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="cycle，周期">周期</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="time，时间">时间</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="period，时间段">时间段</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="date，某天">某天</div>
+                        <div class="property-card txt-black text-center default" data-card-status="default" data-property-name="delay，延迟">延迟</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 form-group" id="space-form-info">
+                        <textarea class="form-control" placeholder="将表单信息复制到这里" id="textarea-form-info" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" id="space-property-relation-card">
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-footer text-center">
+                <button id="btn-make-property-card-default" class="btn btn-warning btn-xs" onclick="makePropertyCardsDefault()">重选</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btn-close-page-find-missing-property" class="btn btn-danger btn-xs">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btn-find-missing-property" class="btn btn-primary btn-xs" onclick="findMissingProperty()">查找</button>
             </div>
         </div>
     </div>

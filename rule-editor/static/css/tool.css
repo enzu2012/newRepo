@@ -36,7 +36,7 @@ div#rule-editor-tool {
     width: 90%;
 }
 
-div#page-setting {
+div.page-middle {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -55,6 +55,32 @@ div.color-card{
     width: 70px;
     height: auto;
     padding: 5px 10px;
+}
+
+div.property-card{
+    float: left;
+    width: 105px;
+    height: auto;
+    padding: 10px 15px;
+    margin: 2px;
+}
+
+div.property-relation-card{
+    float: left;
+    width: 250px;
+    height: auto;
+    padding: 10px 15px;
+    margin: 2px;
+}
+
+
+
+div#page-find-missing-property div.default{
+    background-color: #9ed900;
+}
+
+div#page-find-missing-property div.selected{
+    background-color: #ffb61e;
 }
 
 div.txt-black{
