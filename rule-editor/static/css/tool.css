@@ -82,6 +82,10 @@ div#page-find-missing-property div.selected{
     background-color: #ffb61e;
 }
 
+div#page-find-missing-property div.warning{
+    background-color: #f9906f;
+}
+
 div.txt-black{
     color: black;
 }

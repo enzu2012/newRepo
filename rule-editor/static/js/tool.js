@@ -647,7 +647,7 @@ function findMissingProperty() {
             alert("获取中文变量名出错");
             break;
         } else {
-            propertyRelationCardsHtml += "<div class='property-relation-card txt-black text-center selected' data-card-status='default'>"
+            propertyRelationCardsHtml += "<div class='property-relation-card txt-black text-center warning'>"
                 + propertyNameChineseA + ":" + propertyNameChineseB + "(" + propertyRelationShouldHave[prsh] + ")" + "</div>"
         }
     }
@@ -688,7 +688,7 @@ function findMissingProperty() {
         //alert(prn+":::::"+allPropertyRelationInForm.toString());
         //alert(allPropertyRelationInForm.indexOf(prn));
         if (allPropertyRelationInForm.indexOf(prn) !== -1) {
-            $(this).toggleClass("selected").toggleClass("default");
+            $(this).toggleClass("default").toggleClass("warning");
         }
     });
 }
