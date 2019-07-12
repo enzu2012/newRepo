@@ -38,7 +38,7 @@ div#rule-editor-tool {
 
 div.page-middle {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -67,7 +67,6 @@ div.property-card{
 
 div.property-relation-card{
     float: left;
-    width: 250px;
     height: auto;
     padding: 10px 15px;
     margin: 2px;

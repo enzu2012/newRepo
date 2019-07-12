@@ -669,6 +669,7 @@ function makePropertyCardsDefault() {
     $("div#space-property-card").find("div.property-card").each(function () {
         $(this).removeClass("selected").addClass("default");
         $(this).attr("data-card-status", "default");
+        $("div#space-property-relation-card").html("");
     });
 }
 
