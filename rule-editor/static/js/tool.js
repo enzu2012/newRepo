@@ -603,7 +603,10 @@ function findMissingProperty() {
         "ask_time", "eqp_to", "operation_prf", "eqp_all", "eqp_exclude", "eqp_parm", "eqp_itf", "eqp_verbalize", "eqp_mod", "parm_verbalize",
         "deg_eqp", "deg_floor", "deg_parm", "floor_operation", "floor_eqp", "floor_location", "floor_all", "floor_exclude", "floor_mod",
         "floor_verbalize", "location_deg", "location_eqp", "location_all", "location_exclude", "location_mod", "location_verbalize",
-        "all_operation", "all_deg", "close_mod", "go_location", "go_floor", "to_deg", "polarity_parm", "polarity_eqp", "search_time", "search_period", "search_format_time", "search_hour", "search_minute", "search_eqp", "search_type", "search_location", "search_floor", "howmany_hours", "howmany_minutes", "operation_howlog", "operation_cycle", "operation_time", "cycle_time", "cycle_eqp", "time_eqp", "operation_period", "period_eqp", "cycle_period", "period_time", "operation_date", "date_eqp", "date_time", "date_period"];
+        "all_operation", "all_deg", "close_mod", "go_location", "go_floor", "to_deg", "polarity_parm", "polarity_eqp", "search_time",
+        "search_period", "search_formattime", "search_hour", "search_minute", "search_eqp", "search_type", "search_location",
+        "search_floor", "howmany_hours", "howmany_minutes", "operation_howlog", "operation_cycle", "operation_time", "cycle_time",
+        "cycle_eqp", "time_eqp", "operation_period", "period_eqp", "cycle_period", "period_time", "operation_date", "date_eqp", "date_time", "date_period"];
     //查找状态为selected的变量卡片
     $("div#space-property-card").find("div.property-card[data-card-status='selected']").each(function () {
         //alert($(this).text());
@@ -636,7 +639,7 @@ function findMissingProperty() {
         propertyNameChineseB = "";
         propertyNames = propertyRelationShouldHave[prsh].split("_");
         for (var ps in propertySelected) {
-            //alert(propertyNames[0]+":"+propertySelected[ps][0]+"-------"+propertyNames[0]+":"+propertySelected[ps][0]);
+            alert(propertyNames[0]+":"+propertySelected[ps][0]+"-------"+propertyNames[1]+":"+propertySelected[ps][0]);
             if (propertyNames[0] === propertySelected[ps][0]) {
                 propertyNameChineseA = propertySelected[ps][1];
             } else if (propertyNames[1] === propertySelected[ps][0]) {
@@ -667,6 +670,7 @@ function findMissingProperty() {
     }
     //有效正则：/\_\d/gi         /[_]\d/gi
     formInfo = formInfo.replace(/\_\d/g, "");
+    formInfo = formInfo.replace(/format_time/g, "formattime");
     //alert(formInfo);
     var allPropertyRelationInForm = [];
     formInfo = (formInfo.indexOf(" : ") !== -1) ? (formInfo.split(" : ")[1]) : formInfo;
