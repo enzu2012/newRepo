@@ -684,16 +684,23 @@ function findMissingProperty() {
         }
     }*/
     //alert(allPropertyRelationInForm.toString());
+    var prn ;
+    var fullPRN;
+    var resultText="";
     $("div.property-relation-card").each(function () {
-        var prn = $(this).text();
+        prn=$(this).text();
+        fullPRN=prn;
         prn = prn.match(/\([^)]*\)/)[0];
         prn = prn.substring(1, prn.length - 1);
         //alert(prn+":::::"+allPropertyRelationInForm.toString());
         //alert(allPropertyRelationInForm.indexOf(prn));
         if (formInfo.indexOf(prn) !== -1) {
             $(this).toggleClass("default").toggleClass("warning");
+        }else {
+            resultText+=fullPRN+","
         }
     });
+    if(resultText!=="")$("#textarea-form-info").val(resultText);
 }
 
 //变量卡片恢复默认
