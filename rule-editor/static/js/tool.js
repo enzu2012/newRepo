@@ -669,7 +669,7 @@ function findMissingProperty() {
         }
     }
     //有效正则：/\_\d/gi         /[_]\d/gi
-    formInfo = formInfo.replace(/\_\d/g, "");
+    /*formInfo = formInfo.replace(/\_\d/g, "");
     //alert(formInfo);
     var allPropertyRelationInForm = [];
     formInfo = (formInfo.indexOf(" : ") !== -1) ? (formInfo.split(" : ")[1]) : formInfo;
@@ -682,7 +682,7 @@ function findMissingProperty() {
         if (allPropertyRelationInForm.indexOf(propertyRelationInForm) === -1) {
             allPropertyRelationInForm.push(propertyRelationInForm);
         }
-    }
+    }*/
     //alert(allPropertyRelationInForm.toString());
     $("div.property-relation-card").each(function () {
         var prn = $(this).text();
@@ -690,7 +690,7 @@ function findMissingProperty() {
         prn = prn.substring(1, prn.length - 1);
         //alert(prn+":::::"+allPropertyRelationInForm.toString());
         //alert(allPropertyRelationInForm.indexOf(prn));
-        if (allPropertyRelationInForm.indexOf(prn) !== -1) {
+        if (formInfo.indexOf(prn) !== -1) {
             $(this).toggleClass("default").toggleClass("warning");
         }
     });
