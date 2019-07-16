@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1236215-48c5-42ee-a700-3261a4c98b7c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule-editor/index.html" afterPath="$PROJECT_DIR$/rule-editor/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule-editor/static/js/tool.js" afterPath="$PROJECT_DIR$/rule-editor/static/js/tool.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,8 +22,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="368" column="102" lean-forward="false" selection-start-line="368" selection-start-column="84" selection-end-line="368" selection-end-column="102" />
+            <state relative-caret-position="376">
+              <caret line="355" column="142" lean-forward="false" selection-start-line="355" selection-start-column="142" selection-end-line="355" selection-end-column="142" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -69,8 +67,8 @@
       <file leaf-file-name="tool.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rule-editor/static/js/tool.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="699" column="35" lean-forward="true" selection-start-line="699" selection-start-column="35" selection-end-line="699" selection-end-column="35" />
+            <state relative-caret-position="5661">
+              <caret line="699" column="35" lean-forward="false" selection-start-line="699" selection-start-column="35" selection-end-line="699" selection-end-column="35" />
               <folding>
                 <element signature="n#!!block;n#getRulesInfo#0" expanded="false" />
                 <element signature="n#!!block;n#btnRuleEditOnClick#0" expanded="false" />
@@ -172,8 +170,8 @@
         <option value="$PROJECT_DIR$/rule-editor/static/css/tool.css.rej" />
         <option value="$PROJECT_DIR$/rule-editor/update.html" />
         <option value="$PROJECT_DIR$/rule-editor/static/css/tool.css" />
-        <option value="$PROJECT_DIR$/rule-editor/index.html" />
         <option value="$PROJECT_DIR$/rule-editor/static/js/tool.js" />
+        <option value="$PROJECT_DIR$/rule-editor/index.html" />
       </list>
     </option>
   </component>
@@ -204,7 +202,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,7 +239,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,11 +304,12 @@
       <workItem from="1563168535389" duration="1507000" />
       <workItem from="1563170710958" duration="701000" />
       <workItem from="1563173965993" duration="2694000" />
+      <workItem from="1563240764385" duration="25000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87805000" />
+    <option name="totallyTimeSpent" value="87830000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1941,8 +1940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/static/js/tool.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="699" column="35" lean-forward="true" selection-start-line="699" selection-start-column="35" selection-end-line="699" selection-end-column="35" />
+        <state relative-caret-position="5661">
+          <caret line="699" column="35" lean-forward="false" selection-start-line="699" selection-start-column="35" selection-end-line="699" selection-end-column="35" />
           <folding>
             <element signature="n#!!block;n#getRulesInfo#0" expanded="false" />
             <element signature="n#!!block;n#btnRuleEditOnClick#0" expanded="false" />
@@ -2022,8 +2021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rule-editor/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="368" column="102" lean-forward="false" selection-start-line="368" selection-start-column="84" selection-end-line="368" selection-end-column="102" />
+        <state relative-caret-position="376">
+          <caret line="355" column="142" lean-forward="false" selection-start-line="355" selection-start-column="142" selection-end-line="355" selection-end-column="142" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
