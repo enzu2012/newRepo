@@ -604,7 +604,7 @@ function findMissingProperty() {
         "deg_eqp", "deg_floor", "deg_parm", "floor_operation", "floor_eqp", "floor_location", "floor_all", "floor_exclude", "floor_mod",
         "floor_verbalize", "location_deg", "location_eqp", "location_all", "location_exclude", "location_mod", "location_verbalize",
         "all_operation", "all_deg", "close_mod", "go_location", "go_floor", "to_deg", "polarity_parm", "polarity_eqp", "search_date",
-        "search_period", "search_time", "search_hour", "search_minute", "search_eqp", "search_type", "search_location",
+        "search_period", "search_time", "search_hour", "search_minute", "search_key", "search_type", "search_location",
         "search_floor", "howmany_hours", "howmany_minutes", "operation_howlog", "operation_cycle", "operation_time", "cycle_time",
         "cycle_eqp", "time_eqp", "operation_period", "period_eqp", "cycle_period", "period_time", "operation_date", "date_eqp", "date_time", "date_period"];
     //查找状态为selected的变量卡片
