@@ -366,7 +366,7 @@ function createRule() {
             rules += $(word).text();
         }
     }
-    rules += restrictString + "~#" + creatRelationString();
+    rules += restrictString + "~" + creatRelationString();
     $("textarea#rule").val(rules);
 }
 
@@ -384,7 +384,7 @@ function creatRelationString() {
         keywordAhead = $(this).find("input.txt-num-ahead").val();
         keywordBehind = $(this).find("input.txt-num-behind").val();
         ruleName = $(this).find("input.txt-rule-name").val();
-        relationString += keywordAhead + "," + ruleName + "," + keywordBehind + "."
+        relationString += "#" + keywordAhead + "," + ruleName + "," + keywordBehind + ".";
     });
     return relationString;
 }
