@@ -78,16 +78,12 @@ function editRules(objBtnRuleEdit) {
     var ruleEditToolSpace = $("div#rule-edit-tool");
     //规则名工具显示位置
     var ruleNameToolSpace = $("div#rule-name-space");
-    //关键词序号工具显示位置
-    var keywordsNumToolSpace = $("div#keywords-num-space");
     //词语限定工具显示位置
     var restrictToolSpace = $("div#restrict-space");
     //清空编辑工具
     ruleEditToolSpace.html("");
     //清空规则名工具
     ruleNameToolSpace.html("");
-    //清空关键词序号工具
-    keywordsNumToolSpace.html("");
     //清空词语限定工具
     restrictToolSpace.html("");
     //根据测试结果获取的词组数组
@@ -167,7 +163,20 @@ function editRules(objBtnRuleEdit) {
         }
     } while (sentence.length !== 0);
 
-    //生成规则名输入框及下拉框
+
+    //插入规则名组件
+    ruleNameToolSpace.html(createRuleNameToolHtml());
+
+    changeKeywordsNumOption();
+    ruleEditToolSpace.show();
+    bandForRuleEditBtns();
+    bandForRuleNameTool();
+    createRule();
+    return;
+}
+
+//生成规则名输入框及下拉框
+function createRuleNameToolHtml() {
     var ruleNameToolHtml = "";
     var nameOptionHtml = "";
     var presetRuleName = window.localStorage.getItem("dataPreRuleName");
@@ -180,57 +189,45 @@ function editRules(objBtnRuleEdit) {
         nameOptionHtml += "<option value='none'>无预设规则名</option>";
     }
     ruleNameToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<label class='form-control' style='width: 120px;'>推理规则名：</label>" +
+
+        "<div class='form-group' style='margin-right: 5px;'>" +
+        "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
+        "<input type='text' class='form-control input-fixed txt-num-ahead' value='visitorname' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
+        "<div class='form-group' style='margin-right: 20px;'>" +
+        "<select class='form-control select-fixed keyword-num-ahead' style='width: 20px;'>" +
+        "<option value='visitorname' selected>visitorname</option>" +
+        "</select>" +
+        "</div>" +
+
+        "<div class='form-group' style='margin-right: 5px;'>" +
         "<label class='sr-only' for='input-rule-name'>规则名文本</label>" +
-        "<input type='text' class='form-control input-fixed' id='input-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 130px;'>" +
+        "<input type='text' class='form-control input-fixed txt-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 260px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<select class='form-control select-fixed' id='preset-rule-name'>" +
+        "<div class='form-group' style='margin-right: 20px;'>" +
+        "<select class='form-control select-fixed' id='preset-rule-name' style='width: 20px;'>" +
         nameOptionHtml +
         "</select>" +
         "</div>" +
-        "</form>";
-    ruleNameToolSpace.html(ruleNameToolHtml);
-    //拼接关键词序号选择框及文本框html字符串
-    var keywordsNumToolHtml = "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<label class='form-control' style='width: 120px;'>关键词-前：</label>" +
-        "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed' id='keyword-txt-ahead' value='visitorname' style='width: 130px;'>" +
-        "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<select class='form-control select-fixed' id='keyword-num-ahead'>" +
-        "<option value='visitorname' selected>visitorname</option>" +
-        "</select>" +
-        "</div>" +
-        "</form>" +
-        "<form class='form-inline' role='form'>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<label class='form-control' style='width: 120px;'>关键词-后：</label>" +
-        "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
+
+        "<div class='form-group' style='margin-right: 5px;'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed' id='keyword-txt-behind' value='visitorname' style='width: 130px;'>" +
+        "<input type='text' class='form-control input-fixed txt-num-behind' value='visitorname' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 5px'>" +
-        "<select class='form-control select-fixed' id='keyword-num-behind'>" +
+        "<div class='form-group' style='margin-right: 20px;'>" +
+        "<select class='form-control select-fixed keyword-num-behind' style='width: 20px;'>" +
         "<option value='visitorname' selected>visitorname</option>" +
         "</select>" +
         "</div>" +
+
+        "<div class='form-group'>" +
+        "<i class='fa fa-minus form-control btn btn-danger' id='btn-remove-relation'></i>" +
+        "</div>" +
+
         "</form>";
-    //插入关键词序号默认设置html字符串
-    keywordsNumToolSpace.html(keywordsNumToolHtml);
-    changeKeywordsNumOption();
-    ruleEditToolSpace.show();
-    bandForRuleEditBtns();
-    createRule();
-    return;
+    return ruleNameToolHtml;
 }
+
 
 //修改关键词序号选择框内容
 function changeKeywordsNumOption() {
@@ -240,8 +237,8 @@ function changeKeywordsNumOption() {
     for (var i = 1; i <= keywordNum; i++) {
         optionHtml += "<option class='form-control' value='[" + i + "]'>[" + i + "]</option>";
     }
-    $("#keyword-num-ahead").html(optionHtml);
-    $("#keyword-num-behind").html(optionHtml);
+    $(".keyword-num-ahead").html(optionHtml);
+    $(".keyword-num-behind").html(optionHtml);
 }
 
 //为编辑工具按钮绑定事件
@@ -267,6 +264,11 @@ function bandForRuleEditBtns() {
         $(this).toggleClass("btn-primary").toggleClass("btn-danger");
         createRule();
     });
+
+}
+
+//为规则名组件绑定事件
+function bandForRuleNameTool() {
     //固定选择框事件绑定
     $("select.select-fixed").each(function () {
         $(this).on("change", function () {
@@ -280,7 +282,12 @@ function bandForRuleEditBtns() {
         $(this).on("keyup", function () {
             createRule();
         })
-    })
+    });
+
+    $("i#btn-remove-relation").on("click", function () {
+        $(this).parent().parent().remove();
+        createRule();
+    });
 }
 
 //生成rules
@@ -290,12 +297,6 @@ function createRule() {
     var context = $("div#rule-edit-tool");
     var everyWord = $(context).find("strong");
     var qaTag = context.find("span");
-    //关键词-前输入框内的值
-    var keywordAhead = $("input#keyword-txt-ahead").val();
-    //规则名输入框内的值
-    var ruleName = $("input#input-rule-name").val();
-    //关键词-后输入框内的值
-    var keywordBehind = $("input#keyword-txt-behind").val();
     //所有限定对象元素
     var restricts = $("div#restrict-space").find("input.restrict-txt");
     //词语限定字符串
@@ -351,8 +352,8 @@ function createRule() {
             rules += $(word).text() + "[NA]";
         } else if ($(word).attr("data-type") == "property") {
             propertyNum++;
-            if (propertyNum > 6) {
-                alert("变量最多能有6个");
+            if (propertyNum > 8) {
+                alert("变量最好不要超过8个");
                 $(word).attr("data-type", "ignore");
                 $(word).attr("data-num", 0);
                 $(word).next().show().next().hide();
@@ -365,8 +366,27 @@ function createRule() {
             rules += $(word).text();
         }
     }
-    rules += restrictString + "~#" + keywordAhead + "," + ruleName + "," + keywordBehind + ".";
+    rules += restrictString + "~#" + creatRelationString();
     $("textarea#rule").val(rules);
+}
+
+//生成语义关系字符串（三元组字符串）
+function creatRelationString() {
+    //关键词-前输入框内的值
+    var keywordAhead = "";
+    //规则名输入框内的值
+    var ruleName = "";
+    //关键词-后输入框内的值
+    var keywordBehind = "";
+    //语义关系字符串
+    var relationString = "";
+    $("div#rule-name-space").find("form.form-inline").each(function () {
+        keywordAhead = $(this).find("input.txt-num-ahead").val();
+        keywordBehind = $(this).find("input.txt-num-behind").val();
+        ruleName = $(this).find("input.txt-rule-name").val();
+        relationString += keywordAhead + "," + ruleName + "," + keywordBehind + "."
+    });
+    return relationString;
 }
 
 //恢复默认函数
@@ -657,13 +677,13 @@ function findMissingProperty() {
     $("div#space-property-relation-card").html(propertyRelationCardsHtml);
 
     if (!formInfo) return;
-    if (formInfo.indexOf("\n") !== -1){
-        var formInfoLines=formInfo.split("\n");
-        for(var fi in formInfoLines){
-            if(formInfoLines[fi].indexOf("chat_key")===-1){
+    if (formInfo.indexOf("\n") !== -1) {
+        var formInfoLines = formInfo.split("\n");
+        for (var fi in formInfoLines) {
+            if (formInfoLines[fi].indexOf("chat_key") === -1) {
                 continue;
-            }else {
-                formInfo=formInfoLines[fi];
+            } else {
+                formInfo = formInfoLines[fi];
                 break;
             }
         }
@@ -684,23 +704,23 @@ function findMissingProperty() {
         }
     }*/
     //alert(allPropertyRelationInForm.toString());
-    var prn ;
+    var prn;
     var fullPRN;
-    var resultText="";
+    var resultText = "";
     $("div.property-relation-card").each(function () {
-        prn=$(this).text();
-        fullPRN=prn;
+        prn = $(this).text();
+        fullPRN = prn;
         prn = prn.match(/\([^)]*\)/)[0];
         prn = prn.substring(1, prn.length - 1);
         //alert(prn+":::::"+allPropertyRelationInForm.toString());
         //alert(allPropertyRelationInForm.indexOf(prn));
         if (formInfo.indexOf(prn) !== -1) {
             $(this).toggleClass("default").toggleClass("warning");
-        }else {
-            resultText+=fullPRN+","
+        } else {
+            resultText += fullPRN + ","
         }
     });
-    if(resultText!=="")$("#textarea-form-info").val(resultText);
+    if (resultText !== "") $("#textarea-form-info").val(resultText);
 }
 
 //变量卡片恢复默认
@@ -973,6 +993,14 @@ $(function () {
     $("button#btn-close-page-find-missing-property").on("click", function () {
         makePropertyCardsDefault();
         $("#page-find-missing-property").hide();
+    });
+
+    //增加新语义关系按钮函数绑定
+    $("i#btn-add-new-relation").on("click", function () {
+        $("div#rule-name-space").append(createRuleNameToolHtml());
+        changeKeywordsNumOption();
+        bandForRuleNameTool();
+        createRule();
     });
 
 });
