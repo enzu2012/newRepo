@@ -186,7 +186,7 @@ function createRuleNameToolHtml() {
             nameOptionHtml += "<option value='" + presetRuleName[num] + "'>" + presetRuleName[num] + "</option>";
         }
     } else {
-        nameOptionHtml += "<option value='none'>无预设规则名</option>";
+        nameOptionHtml +="<option value='none'>无预设规则名</option>";
     }
     ruleNameToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
 
@@ -195,8 +195,7 @@ function createRuleNameToolHtml() {
         "<input type='text' class='form-control input-fixed txt-num-ahead' value='visitorname' style='width: 130px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed keyword-num-ahead' style='width: 20px;'>" +
-        "<option value='visitorname' selected>visitorname</option>" +
+        "<select class='form-control select-fixed keyword-num-ahead'style='width: 16px;' >" +
         "</select>" +
         "</div>" +
 
@@ -205,7 +204,7 @@ function createRuleNameToolHtml() {
         "<input type='text' class='form-control input-fixed txt-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 260px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed' id='preset-rule-name' style='width: 20px;'>" +
+        "<select class='form-control select-fixed' id='preset-rule-name'style='width: 16px;' >" +
         nameOptionHtml +
         "</select>" +
         "</div>" +
@@ -215,13 +214,12 @@ function createRuleNameToolHtml() {
         "<input type='text' class='form-control input-fixed txt-num-behind' value='visitorname' style='width: 130px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed keyword-num-behind' style='width: 20px;'>" +
-        "<option value='visitorname' selected>visitorname</option>" +
+        "<select class='form-control select-fixed keyword-num-behind'style='width: 16px;' >" +
         "</select>" +
         "</div>" +
 
         "<div class='form-group'>" +
-        "<i class='fa fa-minus form-control btn btn-danger' id='btn-remove-relation'></i>" +
+        "<button class='form-control btn btn-danger' id='btn-remove-relation'>删除</button>" +
         "</div>" +
 
         "</form>";
@@ -233,7 +231,7 @@ function createRuleNameToolHtml() {
 function changeKeywordsNumOption() {
     var keywordNum = $("#rule-edit-tool").find("strong[data-type='property']").length;
     //生成关键词序号下拉框及输入框
-    var optionHtml = "<option value='visitorname' selected>visitorname</option>";
+    var optionHtml = "<option value='visitorname'>visitorname</option>";
     for (var i = 1; i <= keywordNum; i++) {
         optionHtml += "<option class='form-control' value='[" + i + "]'>[" + i + "]</option>";
     }
@@ -284,7 +282,7 @@ function bandForRuleNameTool() {
         })
     });
 
-    $("i#btn-remove-relation").on("click", function () {
+    $("button#btn-remove-relation").on("click", function () {
         $(this).parent().parent().remove();
         createRule();
     });
@@ -996,7 +994,7 @@ $(function () {
     });
 
     //增加新语义关系按钮函数绑定
-    $("i#btn-add-new-relation").on("click", function () {
+    $("button#btn-add-new-relation").on("click", function () {
         $("div#rule-name-space").append(createRuleNameToolHtml());
         changeKeywordsNumOption();
         bandForRuleNameTool();
