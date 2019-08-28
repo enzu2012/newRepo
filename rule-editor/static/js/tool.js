@@ -92,7 +92,9 @@ function editRules(objBtnRuleEdit) {
     var symbol = ["，", "。", "、", "？", "！", ",", ".", "?", "!"];
     refreshRuleNum();
     //编辑工具按钮组字符串
-    var ruleEditBtns = "<i class='btn btn-primary property fa fa-plus-square' style='margin-right: 10px'></i><i class='btn btn-danger ignore fa fa-minus-square' style='display: none;margin-right: 10px'></i>";
+    //fa fa-minus-square
+    var ruleEditBtns = "<div class='btn btn-primary btn-xs btn-word property text-justify pull-left' style='margin-right: 10px'>[NA]</div>" +
+        "<div class='btn btn-danger btn-xs btn-word ignore text-justify pull-left' style='display: none;margin-right: 10px'>[CD]</div>";
     //对匹配到的测试结果进行处理
     var infoHtml = "";
     var info = infoSentence.split("\n");
@@ -130,13 +132,18 @@ function editRules(objBtnRuleEdit) {
     //按语句顺序匹配words中的关键词，生成rules编辑工具
     var loopNum = 0;
     //QA按钮
-    ruleEditToolSpace.append("<span data-status='false'></span><button class='btn btn-primary btn-sm' id='qa'><b>QA:</b></button>&nbsp;&nbsp;&nbsp;");
+    ruleEditToolSpace.append("<span data-status='false'></span><button class='btn btn-primary btn-xs pull-left' id='qa'><b>QA:</b></button>&nbsp;&nbsp;&nbsp;");
     //匹配关键词 生成词组及词组控制按钮
     do {
         for (var w = 0; w < words.length; w++) {
             if (sentence.indexOf(words[w]) === 0) {
                 sentence = sentence.substring(words[w].length, sentence.length);
-                ruleEditToolSpace.append((symbol.indexOf(words[w]) !== -1) ? "<strong data-type='symbol'>" + words[w] + "</strong>" : "<strong data-type='ignore' class='h3'>" + words[w] + "</strong>" + ruleEditBtns);
+                ruleEditToolSpace.append(
+                    (symbol.indexOf(words[w]) !== -1) ?
+                        "<div  data-type='symbol' class='h3 text-justify word pull-left' style='margin: 0px '>" + words[w] + "</div>"
+                        :
+                        "<div  data-type='ignore' class='h3 text-justify word pull-left' style='margin: 0px '>" + words[w] + "</div>" + ruleEditBtns
+                );
             }
         }
         if (loopNum++ === 100) {
@@ -150,7 +157,10 @@ function editRules(objBtnRuleEdit) {
             }
             if (minIndex > 0) {
                 //alert(sentence.substring(0, minIndex));
-                ruleEditToolSpace.append("<strong data-type='ignore' class='h3'>" + sentence.substring(0, minIndex) + "</strong>" + ruleEditBtns);
+                ruleEditToolSpace.append(
+                    "<div data-type='ignore' class='h3 text-justify word pull-left' style='margin: 0px '>" + sentence.substring(0, minIndex) + "</div>"
+                    + ruleEditBtns
+                );
                 sentence = sentence.substring(minIndex, sentence.length);
                 //alert(sentence);
                 loopNum = 0;
@@ -234,7 +244,7 @@ function createRuleNameToolHtml(status) {
 //修改关键词序号选择框内容
 
 function changeKeywordsNumOption() {
-    var keywordNum = $("#rule-edit-tool").find("strong[data-type='property']").length;
+    var keywordNum = $("#rule-edit-tool").find("div[data-type='property']").length;
     //生成关键词序号下拉框及输入框
     var optionHtml = "<option value='visitorname'>visitorname</option>";
     for (var i = 1; i <= keywordNum; i++) {
@@ -247,13 +257,13 @@ function changeKeywordsNumOption() {
 //为编辑工具按钮绑定事件
 function bandForRuleEditBtns() {
     //关键词后按钮事件绑定
-    $("i.property").each(function () {
+    $("div.property").each(function () {
         $(this).on("click", function () {
             makeWordProperty(this);
             changeKeywordsNumOption();
         })
     });
-    $("i.ignore").each(function () {
+    $("div.ignore").each(function () {
         $(this).on("click", function () {
             makeWordIgnore(this);
             changeKeywordsNumOption();
@@ -308,7 +318,7 @@ function createRule() {
     var propertyNum = 0;
     var rules = "";
     var context = $("div#rule-edit-tool");
-    var everyWord = $(context).find("strong");
+    var everyWord = $(context).find("div.word");
     var qaTag = context.find("span");
     //所有限定对象元素
     var restricts = $("div#restrict-space").find("input.restrict-txt");
@@ -420,15 +430,15 @@ function makeToolDefault() {
 
 //关键字转成变量函数
 function makeWordProperty(btnProperty) {
-    $(btnProperty).prev("strong").attr("data-type", "property");
-    $(btnProperty).hide().next("i").show();
+    $(btnProperty).prev("div.word").attr("data-type", "property");
+    $(btnProperty).hide().next("div.btn-word").show();
     createRule();
     createRestrictTool();
 }
 
 //忽略关键字函数
 function makeWordIgnore(btnIgnore) {
-    $(btnIgnore).hide().prev("i").show().prev("strong").attr("data-type", "ignore");
+    $(btnIgnore).hide().prev("div.btn-word").show().prev("div.word").attr("data-type", "ignore");
     createRule();
     createRestrictTool();
 }
