@@ -165,18 +165,19 @@ function editRules(objBtnRuleEdit) {
 
 
     //插入规则名组件
-    ruleNameToolSpace.html(createRuleNameToolHtml());
+    ruleNameToolSpace.html(createRuleNameToolHtml("init"));
 
     changeKeywordsNumOption();
     ruleEditToolSpace.show();
     bandForRuleEditBtns();
     bandForRuleNameTool();
+    bandForBtnAddRelation();
     createRule();
     return;
 }
 
 //生成规则名输入框及下拉框
-function createRuleNameToolHtml() {
+function createRuleNameToolHtml(status) {
     var ruleNameToolHtml = "";
     var nameOptionHtml = "";
     var presetRuleName = window.localStorage.getItem("dataPreRuleName");
@@ -218,16 +219,20 @@ function createRuleNameToolHtml() {
         "</select>" +
         "</div>" +
 
-        "<div class='form-group'>" +
-        "<button class='form-control btn btn-danger' id='btn-remove-relation'>删除</button>" +
-        "</div>" +
-
+        "<div class='form-group'>";
+    if (status === "init") {
+        ruleNameToolHtml += "<div class=' btn btn-success btn-xs' id='btn-add-new-relation'>新增</div>";
+    } else {
+        ruleNameToolHtml += "<div class=' btn btn-danger btn-xs' id='btn-remove-relation'>删除</div>";
+    }
+    ruleNameToolHtml += "</div>" +
         "</form>";
     return ruleNameToolHtml;
 }
 
 
 //修改关键词序号选择框内容
+
 function changeKeywordsNumOption() {
     var keywordNum = $("#rule-edit-tool").find("strong[data-type='property']").length;
     //生成关键词序号下拉框及输入框
@@ -282,8 +287,18 @@ function bandForRuleNameTool() {
         })
     });
 
-    $("button#btn-remove-relation").on("click", function () {
+    $("div#btn-remove-relation").on("click", function () {
         $(this).parent().parent().remove();
+        createRule();
+    });
+}
+
+function bandForBtnAddRelation() {
+    //增加新语义关系按钮函数绑定
+    $("div#btn-add-new-relation").on("click", function () {
+        $("div#rule-name-space").append(createRuleNameToolHtml());
+        changeKeywordsNumOption();
+        bandForRuleNameTool();
         createRule();
     });
 }
@@ -991,14 +1006,6 @@ $(function () {
     $("button#btn-close-page-find-missing-property").on("click", function () {
         makePropertyCardsDefault();
         $("#page-find-missing-property").hide();
-    });
-
-    //增加新语义关系按钮函数绑定
-    $("button#btn-add-new-relation").on("click", function () {
-        $("div#rule-name-space").append(createRuleNameToolHtml());
-        changeKeywordsNumOption();
-        bandForRuleNameTool();
-        createRule();
     });
 
 });
