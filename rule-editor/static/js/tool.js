@@ -459,7 +459,7 @@ function createRestrictTool() {
         restrictOptionHtml += "<option value='none'>无预设限定</option>";
     }
     var restrictToolHtml = "";
-    var everyWord = $(ruleEditTool).find("strong");
+    var everyWord = $(ruleEditTool).find("div.word");
     for (var wd = 0; wd < everyWord.length; wd++) {
         var word = everyWord[wd];
         if ($(word).attr("data-type") == "property") {
@@ -477,7 +477,7 @@ function createRestrictTool() {
                 "<input type='text' class='form-control restrict-txt' id='restrict-txt' style='width: 130px;'>" +
                 "</div>" +
                 "<div class='form-group' style='margin-right: 5px'>" +
-                "<input class='btn btn-warning none-restrict' id='none-restrict' value='none'style='width: 60px;'>" +
+                "<input class='btn btn-warning btn-xs none-restrict' id='none-restrict' value='none'style='width: 60px;'>" +
                 "</div>" +
                 "<div class='form-group' style='margin-right: 5px'>" +
                 "<select class='form-control select-change' id='preset-restrict'>" +
