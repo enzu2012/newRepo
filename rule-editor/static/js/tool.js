@@ -186,35 +186,35 @@ function createRuleNameToolHtml() {
             nameOptionHtml += "<option value='" + presetRuleName[num] + "'>" + presetRuleName[num] + "</option>";
         }
     } else {
-        nameOptionHtml +="<option value='none'>无预设规则名</option>";
+        nameOptionHtml += "<option value='none'>无预设规则名</option>";
     }
     ruleNameToolHtml += "<form class='form-inline' role='form' style=' margin: 0 0 5px 0 '>" +
 
-        "<div class='form-group' style='margin-right: 5px;'>" +
+        "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
         "<input type='text' class='form-control input-fixed txt-num-ahead' value='visitorname' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed keyword-num-ahead'style='width: 16px;' >" +
+        "<div class='form-group' style='margin-right: 30px;'>" +
+        "<select class='form-control select-fixed keyword-num-ahead'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
         "</select>" +
         "</div>" +
 
-        "<div class='form-group' style='margin-right: 5px;'>" +
+        "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='input-rule-name'>规则名文本</label>" +
         "<input type='text' class='form-control input-fixed txt-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 260px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed' id='preset-rule-name'style='width: 16px;' >" +
+        "<div class='form-group' style='margin-right: 30px;'>" +
+        "<select class='form-control select-fixed' id='preset-rule-name'style='width: 32px;padding-left: 14x;padding-right: 0px' >" +
         nameOptionHtml +
         "</select>" +
         "</div>" +
 
-        "<div class='form-group' style='margin-right: 5px;'>" +
+        "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
         "<input type='text' class='form-control input-fixed txt-num-behind' value='visitorname' style='width: 130px;'>" +
         "</div>" +
-        "<div class='form-group' style='margin-right: 20px;'>" +
-        "<select class='form-control select-fixed keyword-num-behind'style='width: 16px;' >" +
+        "<div class='form-group' style='margin-right: 30px;'>" +
+        "<select class='form-control select-fixed keyword-num-behind'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
         "</select>" +
         "</div>" +
 
