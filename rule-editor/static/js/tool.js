@@ -140,9 +140,9 @@ function editRules(objBtnRuleEdit) {
                 sentence = sentence.substring(words[w].length, sentence.length);
                 ruleEditToolSpace.append(
                     (symbol.indexOf(words[w]) !== -1) ?
-                        "<div  data-type='symbol' class='h3 text-justify word pull-left' style='margin: 0px '>" + words[w] + "</div>"
+                        "<div  data-type='symbol' class='h3 text-justify word pull-left strong' style='margin: 0px '>" + words[w] + "</div>"
                         :
-                        "<div  data-type='ignore' class='h3 text-justify word pull-left' style='margin: 0px '>" + words[w] + "</div>" + ruleEditBtns
+                        "<div  data-type='ignore' class='h3 text-justify word pull-left strong' style='margin: 0px '>" + words[w] + "</div>" + ruleEditBtns
                 );
             }
         }
@@ -158,7 +158,7 @@ function editRules(objBtnRuleEdit) {
             if (minIndex > 0) {
                 //alert(sentence.substring(0, minIndex));
                 ruleEditToolSpace.append(
-                    "<div data-type='ignore' class='h3 text-justify word pull-left' style='margin: 0px '>" + sentence.substring(0, minIndex) + "</div>"
+                    "<div data-type='ignore' class='h3 text-justify word pull-left strong' style='margin: 0px '>" + sentence.substring(0, minIndex) + "</div>"
                     + ruleEditBtns
                 );
                 sentence = sentence.substring(minIndex, sentence.length);
