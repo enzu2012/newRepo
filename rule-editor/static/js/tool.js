@@ -203,7 +203,7 @@ function createRuleNameToolHtml(status) {
 
         "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed txt-num-ahead' value='visitorname' style='width: 130px;'>" +
+        "<input type='text' class='form-control input-fixed txt-num-ahead' value='限定词' style='width: 80px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 30px;'>" +
         "<select class='form-control select-fixed keyword-num-ahead'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
@@ -222,7 +222,7 @@ function createRuleNameToolHtml(status) {
 
         "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed txt-num-behind' value='visitorname' style='width: 130px;'>" +
+        "<input type='text' class='form-control input-fixed txt-num-behind' value='关键词' style='width: 80px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 30px;'>" +
         "<select class='form-control select-fixed keyword-num-behind'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
@@ -246,7 +246,8 @@ function createRuleNameToolHtml(status) {
 function changeKeywordsNumOption() {
     var keywordNum = $("#rule-edit-tool").find("div[data-type='property']").length;
     //生成关键词序号下拉框及输入框
-    var optionHtml = "<option value='visitorname'>visitorname</option>";
+    var optionHtml = "<option value='' disabled selected></option>" +
+        "<option value='visitorname'>visitorname</option>";
     for (var i = 1; i <= keywordNum; i++) {
         optionHtml += "<option class='form-control' value='[" + i + "]'>[" + i + "]</option>";
     }
@@ -303,8 +304,9 @@ function bandForRuleNameTool() {
     });
 }
 
+//增加新语义关系按钮函数绑定
 function bandForBtnAddRelation() {
-    //增加新语义关系按钮函数绑定
+
     $("div#btn-add-new-relation").on("click", function () {
         $("div#rule-name-space").append(createRuleNameToolHtml());
         changeKeywordsNumOption();
