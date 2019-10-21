@@ -191,6 +191,7 @@ function createRuleNameToolHtml(status) {
     var ruleNameToolHtml = "";
     var nameOptionHtml = "";
     var presetRuleName = window.localStorage.getItem("dataPreRuleName");
+    var ruleNameLastTimeUsed = window.localStorage.getItem("ruleNameLastTimeUsed");
     presetRuleName = presetRuleName.split("\n");
     if (presetRuleName[0].length > 2) {
         for (var num = 0; num < presetRuleName.length; num++) {
@@ -212,7 +213,7 @@ function createRuleNameToolHtml(status) {
 
         "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='input-rule-name'>规则名文本</label>" +
-        "<input type='text' class='form-control input-fixed txt-rule-name' value='" + (presetRuleName[0] ? presetRuleName[0] : "") + "' style='width: 260px;'>" +
+        "<input type='text'id='input-rule-name' class='form-control input-fixed txt-rule-name' value='" + (ruleNameLastTimeUsed ? ruleNameLastTimeUsed : "") + "' style='width: 260px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 30px;'>" +
         "<select class='form-control select-fixed' id='preset-rule-name'style='width: 32px;padding-left: 14x;padding-right: 0px' >" +
@@ -770,6 +771,8 @@ $(function () {
     if (!replacePattern) window.localStorage.setItem("replacePattern", "我们-landey\n我-landey\n你们-碧碧\n你-碧碧");
     var fileUrl = window.localStorage.getItem("fileUrl");
     if (!fileUrl) window.localStorage.setItem("fileUrl", "空");
+    var lastUsedRuleName = window.localStorage.getItem("ruleNameLastTimeUsed");
+    if (!lastUsedRuleName) window.localStorage.setItem("ruleNameLastTimeUsed", "rule-");
     //加载本地存储背景颜色
     var backgroundColor = window.localStorage.getItem("backgroundColorValue");
     if (backgroundColor) changeBackgroundColorOfBody(backgroundColor);
@@ -792,21 +795,17 @@ $(function () {
 
     //保存rule按钮事件绑定
     $("button#save-rules").on("click", function () {
+        var presetRuleName = window.localStorage.getItem("dataPreRuleName");
         var saveSpace = $("textarea#save-space");
         var rule = $("textarea#rule");
-        //关键词-前输入框内的值
-        var keywordAhead = $("input#keyword-txt-ahead").val();
-        //规则名输入框内的值
-        var ruleName = $("input#input-rule-name").val();
-        //关键词-后输入框内的值
-        var keywordBehind = $("input#keyword-txt-behind").val();
-        if (keywordAhead == "" || keywordBehind == "" || ruleName == "") {
-            alert("关键词序号或规则名不能为空");
-            return;
+        var ruleNameLastTimeUsed = $("input#input-rule-name").val();
+        if (presetRuleName.indexOf(ruleNameLastTimeUsed) === -1) {
+            window.localStorage.setItem("dataPreRuleName", ruleNameLastTimeUsed + "\n" + presetRuleName);
         }
         if (saveSpace.val().indexOf(rule.val()) === -1) {
             saveSpace.val(saveSpace.val() + "\n" + rule.val());
             window.localStorage.setItem("rulesData", saveSpace.val());
+            window.localStorage.setItem("ruleNameLastTimeUsed", ruleNameLastTimeUsed);
         } else {
             alert("rules已存在");
         }
