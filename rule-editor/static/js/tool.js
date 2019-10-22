@@ -805,7 +805,9 @@ $(function () {
         if (saveSpace.val().indexOf(rule.val()) === -1) {
             saveSpace.val(saveSpace.val() + "\n" + rule.val());
             window.localStorage.setItem("rulesData", saveSpace.val());
-            window.localStorage.setItem("ruleNameLastTimeUsed", ruleNameLastTimeUsed);
+            if (ruleNameLastTimeUsed === window.localStorage.getItem("ruleNameLastTimeUsed")) {
+                window.localStorage.setItem("ruleNameLastTimeUsed", ruleNameLastTimeUsed);
+            }
         } else {
             alert("rules已存在");
         }
