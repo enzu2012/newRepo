@@ -204,7 +204,7 @@ function createRuleNameToolHtml(status) {
 
         "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-ahead'>前关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed txt-num-ahead' value='限定词' style='width: 80px;'>" +
+        "<input type='text' class='form-control input-fixed txt-num-ahead' value='限定词' style='width: 120px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 30px;'>" +
         "<select class='form-control select-fixed keyword-num-ahead'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
@@ -223,7 +223,7 @@ function createRuleNameToolHtml(status) {
 
         "<div class='form-group' style='margin-right: 3px;'>" +
         "<label class='sr-only' for='keyword-txt-behind'>后关键词文本</label>" +
-        "<input type='text' class='form-control input-fixed txt-num-behind' value='关键词' style='width: 80px;'>" +
+        "<input type='text' class='form-control input-fixed txt-num-behind' value='关键词' style='width: 120px;'>" +
         "</div>" +
         "<div class='form-group' style='margin-right: 30px;'>" +
         "<select class='form-control select-fixed keyword-num-behind'style='width: 32px;padding-left: 14px;padding-right: 0px' >" +
@@ -249,9 +249,17 @@ function changeKeywordsNumOption() {
     //生成关键词序号下拉框及输入框
     var optionHtml = "<option value='' disabled selected></option>" +
         "<option value='visitorname'>visitorname</option>";
+    var preValueOfSO = window.localStorage.getItem("dataPreValueOfSO");
     for (var i = 1; i <= keywordNum; i++) {
         optionHtml += "<option class='form-control' value='[" + i + "]'>[" + i + "]</option>";
     }
+    if (preValueOfSO !== "空") {
+        valuesOfSO = preValueOfSO.split("\n");
+        for (var so = 0; so < valuesOfSO.length; so++) {
+            optionHtml += "<option class='form-control' value='" + valuesOfSO[so] + "'>" + valuesOfSO[so] + "</option>";
+        }
+    }
+
     $(".keyword-num-ahead").html(optionHtml);
     $(".keyword-num-behind").html(optionHtml);
 }
@@ -773,6 +781,8 @@ $(function () {
     if (!fileUrl) window.localStorage.setItem("fileUrl", "空");
     var lastUsedRuleName = window.localStorage.getItem("ruleNameLastTimeUsed");
     if (!lastUsedRuleName) window.localStorage.setItem("ruleNameLastTimeUsed", "rule-");
+    var lastUsedRuleName = window.localStorage.getItem("dataPreValueOfSO");
+    if (!lastUsedRuleName) window.localStorage.setItem("dataPreValueOfSO", "空");
     //加载本地存储背景颜色
     var backgroundColor = window.localStorage.getItem("backgroundColorValue");
     if (backgroundColor) changeBackgroundColorOfBody(backgroundColor);
