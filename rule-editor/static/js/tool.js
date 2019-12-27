@@ -189,7 +189,7 @@ function editRules(objBtnRuleEdit) {
 //生成规则名输入框及下拉框
 function createRuleNameToolHtml(status) {
     var ruleNameToolHtml = "";
-    var nameOptionHtml = "";
+    var nameOptionHtml = "<option value='rule-multi-match-'>rule-multi-match-</option>";
     var presetRuleName = window.localStorage.getItem("dataPreRuleName");
     var ruleNameLastTimeUsed = window.localStorage.getItem("ruleNameLastTimeUsed");
     presetRuleName = presetRuleName.split("\n");
@@ -810,6 +810,10 @@ $(function () {
         var rule = $("textarea#rule");
         var ruleNameLastTimeUsed = $("input#input-rule-name").val();
         if (presetRuleName.indexOf(ruleNameLastTimeUsed) === -1) {
+            window.localStorage.setItem("dataPreRuleName", ruleNameLastTimeUsed + "\n" + presetRuleName);
+        } else if (presetRuleName.indexOf(ruleNameLastTimeUsed) > 100) {
+            var reg = RegExp(ruleNameLastTimeUsed + "\\n", "g");
+            presetRuleName = presetRuleName.replace(reg, "");
             window.localStorage.setItem("dataPreRuleName", ruleNameLastTimeUsed + "\n" + presetRuleName);
         }
         if (saveSpace.val().indexOf(rule.val()) === -1) {
