@@ -488,7 +488,7 @@ function createRestrictTool() {
                 "<input type='text' class='form-control restrict-txt' id='restrict-txt' style='width: 130px;'>" +
                 "</div>" +
                 "<div class='form-group' style='margin-right: 5px'>" +
-                "<input class='btn btn-warning btn-xs none-restrict' id='none-restrict' value='none'style='width: 60px;'>" +
+                "<input class='btn btn-warning btn-xs none-restrict' id='none-restrict' value='none'style='width: 60px;' readonly>" +
                 "</div>" +
                 "<div class='form-group' style='margin-right: 5px'>" +
                 "<select class='form-control select-change' id='preset-restrict'>" +
@@ -513,8 +513,11 @@ function createRestrictTool() {
     $("div#restrict-space").find("input.none-restrict").each(function () {
         $(this).on("click", function () {
             var txtRestrict = $(this).parent().prev().find("input");
-            if (txtRestrict.val() == "none") {
-                txtRestrict.val("");
+            var txtR = txtRestrict.val();
+            if (txtR.indexOf("none") !== -1) {
+                txtRestrict.val(txtR.replace(/[+]{0,1}none/g, ""));
+            } else if (txtR) {
+                txtRestrict.val(txtR + "+none");
             } else {
                 txtRestrict.val("none");
             }

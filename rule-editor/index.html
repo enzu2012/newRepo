@@ -44,39 +44,53 @@
                 <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
                         id="submit-id-submit"/>-->
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input name="begin edit" value="生成工具" class="btn button white" id="btn-rule-edit"/>
+                    <input name="begin edit" value="生成工具" class="btn button white" id="btn-rule-edit" readonly/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 ">
-                    <input id="replace-nr" value="人称替换" class="btn button white" data-item="replacePattern"/>
+                    <input id="replace-nr" value="人称替换" class="btn button white" data-item="replacePattern" readonly/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="rule-recover" value="规则还原" class="btn button white"/>
-                </div>
-            </div>
-            <div class="row">
-                <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
-                        id="submit-id-submit"/>-->
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="btn-find-duplicate-items" value="查找重复项" class="btn button white" />
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="replace-pattern" value="读取替换规则" class="btn button white" data-status="read" data-item="replacePattern"/>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="btn-remove-duplicate-item" value="去除重复项" class="btn button white"/>
+                    <input id="rule-recover" value="规则还原" readonly class="btn button white" readonly/>
                 </div>
             </div>
             <div class="row">
                 <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
                         id="submit-id-submit"/>-->
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="btn-tool-notice" value="功能说明" class="btn button white" onclick="toolNotice()"/>
+                    <input id="btn-find-duplicate-items" value="查找重复项" class="btn button white"  readonly/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="btn-change-background-color" value="更改背景颜色" class="btn button white" onclick="openPageSetting()"/>
+                    <input id="replace-pattern" value="读取替换规则" class="btn button white" data-status="read" data-item="replacePattern" readonly/>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <input id="btn-open-page-find-missing-property" value="智能家居工具" class="btn button white" >
+                    <input id="btn-remove-duplicate-item" value="去除重复项" class="btn button white" readonly/>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
+                        id="submit-id-submit"/>-->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <input id="btn-tool-notice" value="功能说明" class="btn button white" onclick="toolNotice()" readonly/>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <input id="btn-change-background-color" value="更改背景颜色" class="btn button white" onclick="openPageSetting()" readonly/>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <input id="btn-open-page-find-missing-property" value="智能家居工具" class="btn button white"  readonly>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <input type="submit" name="submit" value="Generate Graph" class="btn btn-primary button white"
+                        id="submit-id-submit"/>-->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <input class="btn button white" value="查找错误规则" onclick="window.open('findWrongRules.html')" readonly>
+                    <!--<a class="btn btn-block"  href="findWrongRules.html" target="_blank">查找错误规则</a>-->
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+
                 </div>
             </div>
         </div>
