@@ -68,9 +68,9 @@ function findWrongRules(rules) {
         }, {
             regString: "[^\\.\\n]$", wrongMsg: "rule结尾没有《.》", matchInfoShow: 0
         }, {
-            regString: "[=\\+]+[^=,#]+[\\d]+[=\\+]+[^=,#~]+", wrongMsg: "两限定间无《,》", matchInfoShow: 1
+            regString: "[=\\+]+[^=,#\\+0-9]+[0-9]+[=\\+-]+[^=,#~-]+", wrongMsg: "两限定间无《,》", matchInfoShow: 1
         }, {
-            regString: "\\d+[\\+\\=][^\\d\\+=,#~]+", wrongMsg: "限定缺少《=或+》", matchInfoShow: 1
+            regString: "[0-9][\\+\\=][^0-9\\+-=,#~]+\\+", wrongMsg: "限定缺少《=或+》", matchInfoShow: 1
         }, {
             regString: "#\\d\\]", wrongMsg: "格式错误", matchInfoShow: 1
         }];
