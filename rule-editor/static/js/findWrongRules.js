@@ -16,7 +16,7 @@ function findWrongRules(rules) {
         }, {
             illegalString: "+++", wrongMsg: "非法字符组合《+++》"
         }, {
-            illegalString: "《=%", wrongMsg: "非法字符组合《=%》"
+            illegalString: "=%", wrongMsg: "非法字符组合《=%》"
         }, {
             illegalString: "=*", wrongMsg: "非法字符组合《=*》"
         }, {
@@ -36,7 +36,7 @@ function findWrongRules(rules) {
         }, {
             illegalString: ",,", wrongMsg: "非法字符组合《,,》"
         }, {
-            illegalString: "《..", wrongMsg: "非法字符组合《..》"
+            illegalString: "..", wrongMsg: "非法字符组合《..》"
         }, {
             illegalString: ".,", wrongMsg: "非法字符组合《.,》"
         }, {
