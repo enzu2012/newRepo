@@ -47,6 +47,14 @@ function findWrongRules(rules) {
             illegalString: "**", wrongMsg: "非法字符组合《**》"
         }, {
             illegalString: "=+,", wrongMsg: "非法字符组合《=+,》"
+        }, {
+            illegalString: "]NA]", wrongMsg: "非法字符组合《]NA]》"
+        }, {
+            illegalString: "[NA[", wrongMsg: "非法字符组合《[NA[》"
+        }, {
+            illegalString: "rule-rule-", wrongMsg: "规则名错误？《rule-rule-》"
+        }, {
+            illegalString: "~|", wrongMsg: "非法字符组合《~|》"
         }];
 
     /*正则对象数组*/
@@ -59,13 +67,19 @@ function findWrongRules(rules) {
             regString: "\\[(?!NA)[^0-9\\]]*\\]", wrongMsg: "[]之间不是NA或者数字", matchInfoShow: 1
         }, {
             regString: "[^\\.\\n]$", wrongMsg: "rule结尾没有《.》", matchInfoShow: 0
+        }, {
+            regString: "[=\\+]+[^=,#]+[\\d]+[=\\+]+[^=,#~]+", wrongMsg: "两限定间无《,》", matchInfoShow: 1
+        }, {
+            regString: "\\d+[\\+\\=][^\\d\\+=,#~]+", wrongMsg: "限定缺少《=或+》", matchInfoShow: 1
+        }, {
+            regString: "#\\d\\]", wrongMsg: "格式错误", matchInfoShow: 1
         }];
 
 
     /*必要符号对象数组*/
     var essentialStringObject = [
         {
-            essentialString: "~", wrongMsg: "缺少《~》符号了"
+            essentialString: "~", wrongMsg: "缺少《~》符号"
         }, {
             essentialString: "#", wrongMsg: "缺少《#》符号"
         }, {
