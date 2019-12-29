@@ -76,7 +76,8 @@ function findWrongRules(rules) {
 
 
     for (var i = 0; i < rules.length; i++) {
-        if (rules[i]) {
+
+        if (rules[i] && !rules[i].match(/^------/)&&!rules[i].match(/^#rules$/)) {
 
             /*必要符号检测*/
             for (var e = 0; e < essentialStringObject.length; e++) {
@@ -125,7 +126,7 @@ function findWrongRules(rules) {
                     }
                     if (checkRegExpObj[c].matchInfoShow === 1) {
                         wrongInfo += "---错误信息：";
-                        for (var mi = 0; mi < matchInfo.length; mi++){
+                        for (var mi = 0; mi < matchInfo.length; mi++) {
                             wrongInfo += matchInfo[mi] + "-----";
                         }
                     }
