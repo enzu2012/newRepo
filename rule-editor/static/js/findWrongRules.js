@@ -73,6 +73,10 @@ function findWrongRules(rules) {
             regString: "[0-9][\\+\\=][^0-9\\+-=,#~]+\\+", wrongMsg: "限定缺少《=或+》", matchInfoShow: 1
         }, {
             regString: "#\\d\\]", wrongMsg: "格式错误", matchInfoShow: 1
+        }, {
+            regString: "\\[([0-9]|NA)[^\\]]", wrongMsg: "缺失《]》", matchInfoShow: 1
+        }, {
+            regString: "[^\\[]([0-9]|NA|N)\\]", wrongMsg: "缺失《[》", matchInfoShow: 1
         }];
 
 
