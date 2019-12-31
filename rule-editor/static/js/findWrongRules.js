@@ -94,7 +94,11 @@ function findWrongRules(rules) {
         }, {
             regString: "[~\\.][^\\|#=+~.]+,rule(-[\\w]+)+,[^\\.]+\\.", wrongMsg: "三元组缺少《#》", matchInfoShow: 1
         }, {
-            regString: "(#[^#.\\-,\\n]+[rule](-[\\w]+)+)|(rule(-[\\w]+)+[\\.\\[\\d\\]]+)",
+            regString: "#[^#\\.\\-,\\n]+rule(-[\\w]+)+",
+            wrongMsg: "三元组缺少《,》",
+            matchInfoShow: 1
+        }, {
+            regString: "rule(-[\\w]+)+[^,][\\[\\]\\.]+",
             wrongMsg: "三元组缺少《,》",
             matchInfoShow: 1
         }, {
