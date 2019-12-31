@@ -22,51 +22,41 @@
 
 </head>
 
-<body class="container" style="width: 100%">
-    <form role="form">
+<body style="height: 100%;width: 100%;padding: 0;margin: 0;" >
+<div class="container"  style="width: 100%;height: 100%;box-sizing: border-box;position: fixed">
+    <form role="form" >
         <div class="row full-page-middle">
-            <div class="col-lg-1 col-sm-1"></div>
-            <div class="col-lg-4 col-sm-4">
-                <div class="row text-center">
-                    <div class="col-lg-12 col-sm-12">#rules</div>
+            <div class="col-lg-5 col-sm-5" style="height: 100%;padding-left: 100px">
+                <div class="row text-center" style="height: 7%">
+                    <div class="col-lg-12 col-sm-12" style="height: 100%"><h4>#rules</h4></div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <textarea class="form-control" id="rules" style="height: 700px;"></textarea>
+                <div class="row" style="height: 93%">
+                    <div class="col-lg-12 col-sm-12" style="height: 100%">
+                        <textarea class="form-control" id="rules" style="height: 100%;"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1 col-sm-1">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="row text-center">
+            <div class="col-lg-1 col-sm-1" style="height: 100%;padding:200px 0px 0px 0px;">
+                        <!--<div class="row text-center">
                             <div>错误标记</div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
-                                <textarea class="form-control" id="check-reg" style="height: 550px;"></textarea>
+                                <textarea class="form-control" id="check-reg" style="height: 55%;"></textarea>
                             </div>
-                        </div>
-                        <div class="row text-center">
-                            <div class="col-lg-12 col-sm-12 text-center">
-                                <input class="btn btn-default form-control"  value="查找" id="btn-find-wrong-rules" readonly>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                        </div>-->
+                                <input class="btn btn-block  form-control"  value="查找" id="btn-find-wrong-rules" readonly>
             </div>
-            <div class="col-lg-5 col-sm-5">
-                <div class="row text-center">
-                    <div class="col-lg-12 col-sm-12">错误信息</div>
+            <div class="col-lg-6 col-sm-6" style="height: 100%;padding-right:100px;">
+                <div class="row text-center" style="height: 7%">
+                    <div class="col-lg-12 col-sm-12" style="height: 100%"><h4>错误信息</h4></div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <textarea class="form-control" id="wrong-rules" style="height: 700px;"></textarea>
+                <div class="row" style="height: 93%">
+                    <div class="col-lg-12 col-sm-12" style="height: 100%">
+                        <textarea class="form-control" id="wrong-rules" style="height: 100%;"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1 col-sm-1"></div>
         </div>
     </form>
 
@@ -78,6 +68,6 @@
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/findWrongRules.js"></script>
 
-
+</div><!--container-->
 </body>
 </html>
