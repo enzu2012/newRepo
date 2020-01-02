@@ -463,6 +463,7 @@ function createRestrictTool() {
     var restrictOptionHtml = "";
     presetRestrict = presetRestrict.split("\n");
     if (presetRestrict[0].length > 1) {
+        restrictOptionHtml += "<option value='预设限定'>预设限定</option>";
         for (var num = 0; num < presetRestrict.length; num++) {
             restrictOptionHtml += "<option value='" + presetRestrict[num] + "'>" + presetRestrict[num] + "</option>";
         }
