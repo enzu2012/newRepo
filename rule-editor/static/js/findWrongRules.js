@@ -104,7 +104,7 @@ function findWrongRules(rules) {
         }, {
             regString: "([=\\+]{1,2}[^\\+\\-,#~=]+)+\\-[^\\+\\-,#~=]*", wrongMsg: "限定同时存在《+》和《-》", matchInfoShow: 1
         }, {
-            regString: "[^\\+\\=\\|]+none[,~]", wrongMsg: "限定错误", matchInfoShow: 1
+            regString: "[^\\+\\=\\|\\-\\%\\*\\]\\[]+none[,~]", wrongMsg: "限定错误", matchInfoShow: 1
         }];
 
     /*必要符号对象数组*/
