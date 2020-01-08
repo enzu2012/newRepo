@@ -1,11 +1,24 @@
 function findWrongRules(rules) {
+    /*所有rule数组包含空行及注释行*/
     var rules = rules.split("\n");
+    /*错误信息*/
     var wrongInfo = "";
+    /*错误状态查找到错误置1检测完成一条rule后恢复0*/
     var wrongStatus = 0;
+    /*正则对象*/
     var reg;
+    /*正则对象匹配到的信息*/
     var matchInfo;
+    /*待检测字符串*/
     var strWaitCheck;
+    /*不可重复正则对象*/
     var notRepeatObj;
+    /*节点数量*/
+    var nodeNum;
+    /*限定的数字*/
+    var matchRestrictNumber;
+    var matchStatus = 0;
+
 
     /*非法字符组合对象数组*/
     var illegalStringObj = [
@@ -15,6 +28,12 @@ function findWrongRules(rules) {
             illegalString: "+=", wrongMsg: "非法字符组合《+=》"
         }, {
             illegalString: ",=", wrongMsg: "非法字符组合《,=》"
+        }, {
+            illegalString: "=,", wrongMsg: "非法字符组合《=,》"
+        }, {
+            illegalString: "+,", wrongMsg: "非法字符组合《+,》"
+        }, {
+            illegalString: ",+", wrongMsg: "非法字符组合《,+》"
         }, {
             illegalString: "+++", wrongMsg: "非法字符组合《+++》"
         }, {
@@ -29,8 +48,6 @@ function findWrongRules(rules) {
             illegalString: "]]", wrongMsg: "非法字符组合《]]》"
         }, {
             illegalString: "][", wrongMsg: "非法字符组合《][》"
-        }, {
-            illegalString: ",=", wrongMsg: "非法字符组合《,=》"
         }, {
             illegalString: "|+", wrongMsg: "非法字符组合《|+》"
         }, {
@@ -66,7 +83,21 @@ function findWrongRules(rules) {
         }, {
             illegalString: "==", wrongMsg: "非法字符组合《==》"
         }, {
+            illegalString: "，,", wrongMsg: "非法字符组合《，,》"
+        }, {
+            illegalString: ",，", wrongMsg: "非法字符组合《,，》"
+        }, {
+            illegalString: ".。", wrongMsg: "非法字符组合《.。》"
+        }, {
+            illegalString: "。.", wrongMsg: "非法字符组合《。.》"
+        }, {
+            illegalString: "=+-", wrongMsg: "非法字符组合《=+-》"
+        }, {
             illegalString: " ", wrongMsg: "非法字符《空格》"
+        }, {
+            illegalString: "noen", wrongMsg: "拼写错误《noen》"
+        }, {
+            illegalString: "neno", wrongMsg: "拼写错误《neno》"
         }];
 
     /*正则对象数组*/
@@ -80,9 +111,13 @@ function findWrongRules(rules) {
         }, {
             regString: "[^\\.\\n]$", wrongMsg: "rule结尾没有《.》", matchInfoShow: 0
         }, {
+            regString: "\\[\\d[\\.]?$", wrongMsg: "结尾缺失《]》", matchInfoShow: 0
+        }, {
             regString: "[=\\+]+[^=,#\\+0-9]+[0-9]+[=\\+-]+[^=,#~-]+", wrongMsg: "两限定间无《,》", matchInfoShow: 1
         }, {
             regString: "[\\|,][0-9][\\+\\=][^\\d\\+\\-=,#~]+", wrongMsg: "限定缺少《=或+》", matchInfoShow: 1
+        }, {
+            regString: "\\d\\+[\\+\\*\\%][^\\,~\\=\\+\\[\\]\\-]*", wrongMsg: "限定缺少《=》", matchInfoShow: 1
         }, {
             regString: "#\\d\\]", wrongMsg: "格式错误", matchInfoShow: 1
         }, {
@@ -105,6 +140,8 @@ function findWrongRules(rules) {
             regString: "([=\\+]{1,2}[^\\+\\-,#~=]+)+\\-[^\\+\\-,#~=]*", wrongMsg: "限定同时存在《+》和《-》", matchInfoShow: 1
         }, {
             regString: "[^\\+\\=\\|\\-\\%\\*\\]\\[]+none[,~]", wrongMsg: "限定错误", matchInfoShow: 1
+        }, {
+            regString: "[\\[]?(landy|land|lndy|ladey|laney|lady)[\\[]", wrongMsg: "landey拼写错误", matchInfoShow: 1
         }];
 
     /*必要符号对象数组*/
@@ -239,6 +276,50 @@ function findWrongRules(rules) {
                 }
             }
 
+            /*节点检测*/
+            strWaitCheck = rules[i].split("~")[0];
+            reg = /\[[1-9]\]/g;
+            matchInfo = strWaitCheck.match(reg);
+            if (matchInfo) {
+                /*节点数量检测*/
+                if (matchInfo.length > 6) {
+                    if (wrongStatus === 0) {
+                        wrongInfo += rules[i] + "\n【问题：节点数量超过6】";
+                        wrongStatus = 1;
+                    } else {
+                        wrongInfo += "\n【问题：节点数量超过6】"
+                    }
+                }
+                /*节点对应问题检测*/
+                if (matchInfo.length > 1) {
+                    reg = /[1-9][\=\+]/g;
+                    matchRestrictNumber = strWaitCheck.match(reg);
+                    if (matchRestrictNumber) {
+                        for (var res = 0; res < matchRestrictNumber.length; res++) {
+                            matchRestrictNumber[res] = matchRestrictNumber[res].substring(0, 1);
+                        }
+                        //alert("节点："+matchInfo.concat()+"\n限定序号："+matchRestrictNumber.concat());
+                        for (var mrn = 0; mrn < matchRestrictNumber.length; mrn++) {
+                            for (var mi = 0; mi < matchInfo.length; mi++) {
+                                //alert("比对节点："+matchInfo[mi]+"\n比对限定："+matchRestrictNumber[mrn]+"\n比对结果："+matchInfo[mi].indexOf(matchRestrictNumber[mrn]));
+                                if (matchInfo[mi].indexOf(matchRestrictNumber[mrn]) !== -1) {
+                                    matchStatus = 1;
+                                }
+                            }
+                            if (matchStatus === 0) {
+                                if (wrongStatus === 0) {
+                                    wrongInfo += rules[i] + "\n【问题:限定问题，不存在节点[" + matchRestrictNumber[mrn] + "]】";
+                                    wrongStatus = 1;
+                                } else {
+                                    wrongInfo += "\n【问题:限定问题，不存在节点[" + matchRestrictNumber[mrn] + "]】";
+                                }
+                            }
+                            matchStatus = 0;
+                        }
+                    }
+
+                }
+            }
 
             if (wrongStatus === 1) {
                 wrongInfo += "\n\n";
